@@ -1,781 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colleen Murphy — Freelance Business Support</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+Colleen Murphy
+		ABOUT
+		SERVICES
+		HOW IT WORKS
+		GET IN TOUCH
 
-    :root {
-      --navy: #0f1c2e;
-      --navy-mid: #162438;
-      --gold: #c9a84c;
-      --gold-light: #e2c97e;
-      --cream: #f5f0e8;
-      --warm-white: #faf8f4;
-      --text-dark: #1a2a3a;
-      --text-muted: #6b7a8a;
-    }
+FREELANCE BUSINESS SUPPORT
+Helping your business run more efficiently
+Practical, hands-on support for busy local businesses — without the overhead of hiring full-time staff.
+GET IN TOUCH
+SEE SERVICES
+📋
+Business processes & admin systems
+📊
+Spreadsheets & tracking templates
+💷
+Budget & cost control
+✅
+Project & task organisation
+🔧
+Improving existing systems
+ORGANISE
+·
+SIMPLIFY
+·
+IMPROVE
+·
+TRACK
+·
+SOLVE
+ABOUT
+Too busy to get organised?
+Running a business takes everything you've got. When there's no time left to step back and sort out systems, inefficiencies pile up and things start slipping through the cracks.
+I work directly with business owners to bring structure, clarity and calm to the operational side of things — from setting up simple tracking tools to overhauling the way your processes flow.
+Services are flexible and tailored to what you actually need. No long-term contracts, no fuss — just practical support that makes a real difference.
+Colleen Murphy
+PROJECT MANAGER · PRACTICAL BUSINESS SUPPORT
+✉
+[email protected]
+📞
+07732 867230
+📍
+Based in Omagh, Northern Ireland
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Jost', sans-serif;
-      background: var(--warm-white);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(15, 28, 46, 0.97);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color 0.25s;
-    }
-    .nav-links a:hover { color: var(--gold-light); }
-    .nav-cta {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold) !important;
-      padding: 0.5rem 1.4rem;
-      border-radius: 2px;
-      transition: all 0.25s !important;
-    }
-    .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      background: var(--navy);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 5rem;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-lines {
-      position: absolute; top: 0; right: 0; bottom: 0; width: 50%;
-      background-image: 
-        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.04) 80px);
-      pointer-events: none;
-    }
-    .hero-content {
-      padding: 6rem 4rem 6rem 6rem;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.9s ease both;
-    }
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block; width: 2.5rem; height: 1px;
-      background: var(--gold);
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 5vw, 5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-    .hero-sub {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.75;
-      max-width: 440px;
-      margin-bottom: 3rem;
-    }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--navy);
-      padding: 0.9rem 2.2rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.25s;
-    }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .btn-ghost {
-      border: 1px solid rgba(255,255,255,0.3);
-      color: rgba(255,255,255,0.8);
-      padding: 0.9rem 2.2rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.25s;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
-
-    .hero-right {
-      padding: 6rem 6rem 6rem 2rem;
-      display: flex; flex-direction: column; gap: 1rem;
-      position: relative; z-index: 1;
-      animation: fadeUp 0.9s 0.2s ease both;
-    }
-    .stat-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(201,168,76,0.18);
-      border-radius: 4px;
-      padding: 1.4rem 1.8rem;
-      display: flex; align-items: center; gap: 1.2rem;
-      transition: all 0.3s;
-    }
-    .stat-card:hover {
-      background: rgba(201,168,76,0.07);
-      border-color: rgba(201,168,76,0.4);
-      transform: translateX(6px);
-    }
-    .stat-icon {
-      width: 2.2rem; height: 2.2rem;
-      background: rgba(201,168,76,0.12);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .stat-label {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 400;
-    }
-
-    /* TAGLINE BAR */
-    .tagline-bar {
-      background: var(--gold);
-      padding: 1rem 4rem;
-      display: flex; gap: 0; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-    .tagline-bar span {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--navy);
-      white-space: nowrap;
-    }
-    .tagline-sep {
-      margin: 0 2rem;
-      color: rgba(15,28,46,0.4);
-    }
-
-    /* ABOUT */
-    .about {
-      padding: 8rem 6rem;
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 5rem;
-      align-items: center;
-      background: var(--warm-white);
-    }
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .section-label::before {
-      content: '';
-      display: block; width: 2rem; height: 1px;
-      background: var(--gold);
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      font-weight: 300;
-      line-height: 1.2;
-      color: var(--navy);
-      margin-bottom: 1.5rem;
-    }
-    .section-title em { font-style: italic; color: #8a6f3a; }
-    .about-text {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: #4a5a6a;
-      font-weight: 300;
-    }
-    .about-text p + p { margin-top: 1rem; }
-
-    .about-card {
-      background: var(--navy);
-      border-radius: 6px;
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .about-card::after {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    }
-    .profile-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.3rem;
-    }
-    .profile-title {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.8rem;
-    }
-    .profile-detail {
-      display: flex; align-items: center; gap: 0.8rem;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 0.8rem;
-    }
-    .profile-detail span:first-child { color: var(--gold); font-size: 1rem; }
-    .profile-detail a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
-    .profile-detail a:hover { color: var(--gold-light); }
-    .profile-divider {
-      border: none; border-top: 1px solid rgba(255,255,255,0.1);
-      margin: 1.8rem 0;
-    }
-    .profile-note {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.45);
-      font-style: italic;
-      font-family: 'Cormorant Garamond', serif;
-      line-height: 1.6;
-    }
-
-    /* SERVICES */
-    .services {
-      padding: 8rem 6rem;
-      background: var(--cream);
-      position: relative;
-    }
-    .services-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 4.5rem;
-    }
-    .services-header .section-label { justify-content: center; }
-    .services-header .section-label::before { display: none; }
-    .services-header .section-label::after {
-      content: '';
-      display: block; width: 2rem; height: 1px;
-      background: var(--gold);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .service-card {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,0.07);
-      border-radius: 4px;
-      padding: 2.5rem 2.2rem;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
-    }
-    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-icon {
-      font-size: 1.6rem;
-      margin-bottom: 1.2rem;
-    }
-    .service-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 0.8rem;
-    }
-    .service-desc {
-      font-size: 0.88rem;
-      line-height: 1.75;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-
-    /* HOW IT WORKS */
-    .process {
-      padding: 8rem 6rem;
-      background: var(--navy);
-      color: #fff;
-    }
-    .process-header {
-      max-width: 520px;
-      margin-bottom: 4rem;
-    }
-    .process-header .section-title { color: #fff; }
-    .process-header .section-title em { color: var(--gold-light); }
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      position: relative;
-    }
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 1.8rem; left: 12%; right: 12%;
-      height: 1px;
-      background: linear-gradient(90deg, var(--gold), transparent 50%, var(--gold));
-      opacity: 0.3;
-    }
-    .process-step {
-      padding: 0 1.5rem;
-      text-align: center;
-    }
-    .step-num {
-      width: 3.6rem; height: 3.6rem;
-      background: transparent;
-      border: 1px solid rgba(201,168,76,0.4);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--gold);
-      position: relative; z-index: 1;
-      background: var(--navy);
-    }
-    .step-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.6rem;
-    }
-    .step-desc {
-      font-size: 0.83rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* CTA */
-    .cta {
-      padding: 8rem 6rem;
-      background: var(--warm-white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .cta-text .section-title { margin-bottom: 1.2rem; }
-    .cta-text p {
-      font-size: 1rem;
-      color: #4a5a6a;
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 2.5rem;
-    }
-    .cta-form {
-      background: var(--navy);
-      border-radius: 6px;
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-form::after {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    }
-    .cta-form h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-    .cta-form p {
-      font-size: 0.83rem;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 2rem;
-    }
-    .contact-item {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1rem 1.2rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(201,168,76,0.15);
-      border-radius: 3px;
-      margin-bottom: 0.8rem;
-      text-decoration: none;
-      transition: all 0.25s;
-    }
-    .contact-item:hover {
-      background: rgba(201,168,76,0.08);
-      border-color: rgba(201,168,76,0.35);
-    }
-    .contact-icon { font-size: 1.1rem; }
-    .contact-label {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 0.15rem;
-    }
-    .contact-value {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
-    }
-    .no-obligation {
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.3);
-      font-style: italic;
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--navy);
-      border-top: 1px solid rgba(201,168,76,0.15);
-      padding: 2rem 6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .footer-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      font-weight: 600;
-    }
-    .footer-tagline {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.1em;
-    }
-    .footer-loc {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      nav { padding: 1.2rem 2rem; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-content { padding: 4rem 2rem 2rem; }
-      .hero-right { padding: 2rem 2rem 4rem; }
-      .about, .cta { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
-      .services { padding: 5rem 2rem; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .process { padding: 5rem 2rem; }
-      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .process-steps::before { display: none; }
-      footer { padding: 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-    }
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
-      .tagline-bar { gap: 0; flex-wrap: wrap; justify-content: center; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="#">Colleen Murphy</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">How It Works</a></li>
-      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-lines"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Freelance Business Support</p>
-      <h1 class="hero-title">
-        Helping your<br>business run<br><em>more efficiently</em>
-      </h1>
-      <p class="hero-sub">
-        Practical, hands-on support for busy local businesses — without the overhead of hiring full-time staff.
-      </p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Get in Touch</a>
-        <a href="#services" class="btn-ghost">See Services</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="stat-card">
-        <div class="stat-icon">📋</div>
-        <span class="stat-label">Business processes & admin systems</span>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">📊</div>
-        <span class="stat-label">Spreadsheets & tracking templates</span>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">💷</div>
-        <span class="stat-label">Budget & cost control</span>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">✅</div>
-        <span class="stat-label">Project & task organisation</span>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🔧</div>
-        <span class="stat-label">Improving existing systems</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- TAGLINE BAR -->
-  <div class="tagline-bar">
-    <span>Organise</span><span class="tagline-sep"> · </span>
-    <span>Simplify</span><span class="tagline-sep"> · </span>
-    <span>Improve</span><span class="tagline-sep"> · </span>
-    <span>Track</span><span class="tagline-sep"> · </span>
-    <span>Solve</span>
-  </div>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="reveal">
-      <p class="section-label">About</p>
-      <h2 class="section-title">Too busy to get<br><em>organised?</em></h2>
-      <div class="about-text">
-        <p>Running a business takes everything you've got. When there's no time left to step back and sort out systems, inefficiencies pile up and things start slipping through the cracks.</p>
-        <p>I work directly with business owners to bring structure, clarity and calm to the operational side of things — from setting up simple tracking tools to overhauling the way your processes flow.</p>
-        <p>Services are flexible and tailored to what you actually need. No long-term contracts, no fuss — just practical support that makes a real difference.</p>
-      </div>
-    </div>
-    <div class="about-card reveal">
-      <p class="profile-name">Colleen Murphy</p>
-      <p class="profile-title">Project Manager · Practical Business Support</p>
-      <div class="profile-detail">
-        <span>✉</span>
-        <a href="mailto:colleenpmni@gmail.com">colleenpmni@gmail.com</a>
-      </div>
-      <div class="profile-detail">
-        <span>📞</span>
-        <a href="tel:07732867230">07732 867230</a>
-      </div>
-      <div class="profile-detail">
-        <span>📍</span>
-        <span>Based in Omagh, Northern Ireland</span>
-      </div>
-      <hr class="profile-divider">
-      <p class="profile-note">"Services are flexible — get in touch to see if I can help."</p>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="services-header reveal">
-      <p class="section-label">Services</p>
-      <h2 class="section-title">What I can<br><em>help with</em></h2>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon">📋</div>
-        <h3 class="service-name">Business Processes & Admin</h3>
-        <p class="service-desc">Mapping out how your business actually works, identifying bottlenecks, and building clearer, more consistent processes that save you time every week.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">📊</div>
-        <h3 class="service-name">Spreadsheets & Tracking</h3>
-        <p class="service-desc">Custom spreadsheets and tracking templates built around your workflow — easy to use, easy to maintain, and actually useful day-to-day.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">💷</div>
-        <h3 class="service-name">Budget & Cost Control</h3>
-        <p class="service-desc">Getting a clearer picture of where money is going, helping you track costs against budget and spot where savings can be made.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">✅</div>
-        <h3 class="service-name">Project & Task Organisation</h3>
-        <p class="service-desc">Bringing structure to projects and ongoing tasks — so nothing is forgotten, priorities are clear, and progress is visible.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🔧</div>
-        <h3 class="service-name">Improving Existing Systems</h3>
-        <p class="service-desc">Sometimes things are mostly working but not quite right. I can review what you have and make targeted improvements without starting from scratch.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🤝</div>
-        <h3 class="service-name">Structured Business Support</h3>
-        <p class="service-desc">Ongoing, flexible support tailored to where your business needs it most — without the commitment and cost of a full-time hire.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="process" id="process">
-    <div class="process-header reveal">
-      <p class="section-label">How It Works</p>
-      <h2 class="section-title">Simple, <em>no-obligation</em> process</h2>
-    </div>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="step-num">01</div>
-        <h4 class="step-title">Get in Touch</h4>
-        <p class="step-desc">A quick call or email to tell me a bit about your business and what you're struggling with.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="step-num">02</div>
-        <h4 class="step-title">Free Chat</h4>
-        <p class="step-desc">No obligation conversation to work out whether and how I can help. No pressure, no jargon.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="step-num">03</div>
-        <h4 class="step-title">Tailored Plan</h4>
-        <p class="step-desc">If it's a good fit, we agree on a flexible plan of support that matches your actual needs.</p>
-      </div>
-      <div class="process-step reveal">
-        <div class="step-num">04</div>
-        <h4 class="step-title">Get Organised</h4>
-        <p class="step-desc">Practical, hands-on support that makes a real difference to how your business operates.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA / CONTACT -->
-  <section class="cta" id="contact">
-    <div class="cta-text reveal">
-      <p class="section-label">Contact</p>
-      <h2 class="section-title">Let's have a<br><em>chat</em></h2>
-      <p>Whether you have a specific problem in mind or just a nagging sense that things could be better organised — I'm happy to talk it through. No commitment required.</p>
-      <a href="mailto:colleenpmni@gmail.com" class="btn-primary">Send an Email</a>
-    </div>
-    <div class="cta-form reveal">
-      <h3>Get in touch</h3>
-      <p>Happy to chat — no obligation</p>
-      <a href="mailto:colleenpmni@gmail.com" class="contact-item">
-        <span class="contact-icon">✉️</span>
-        <div>
-          <span class="contact-label">Email</span>
-          <span class="contact-value">colleenpmni@gmail.com</span>
-        </div>
-      </a>
-      <a href="tel:07732867230" class="contact-item">
-        <span class="contact-icon">📞</span>
-        <div>
-          <span class="contact-label">Phone</span>
-          <span class="contact-value">07732 867230</span>
-        </div>
-      </a>
-      <div class="contact-item" style="cursor:default;">
-        <span class="contact-icon">📍</span>
-        <div>
-          <span class="contact-label">Location</span>
-          <span class="contact-value">Based in Omagh, Northern Ireland</span>
-        </div>
-      </div>
-      <p class="no-obligation">Services are flexible — get in touch to see if I can help.</p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div>
-      <p class="footer-name">Colleen Murphy</p>
-      <p class="footer-tagline">Project Manager · Practical Business Support</p>
-    </div>
-    <p class="footer-loc">📍 Omagh, Northern Ireland</p>
-  </footer>
-
-  <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+"Services are flexible — get in touch to see if I can help."
+SERVICES
+What I can help with
+📋
+Business Processes & Admin
+Mapping out how your business actually works, identifying bottlenecks, and building clearer, more consistent processes that save you time every week.
+📊
+Spreadsheets & Tracking
+Custom spreadsheets and tracking templates built around your workflow — easy to use, easy to maintain, and actually useful day-to-day.
+💷
+Budget & Cost Control
+Getting a clearer picture of where money is going, helping you track costs against budget and spot where savings can be made.
+✅
+Project & Task Organisation
+Bringing structure to projects and ongoing tasks — so nothing is forgotten, priorities are clear, and progress is visible.
+🔧
+Improving Existing Systems
+Sometimes things are mostly working but not quite right. I can review what you have and make targeted improvements without starting from scratch.
+🤝
+Structured Business Support
+Ongoing, flexible support tailored to where your business needs it most — without the commitment and cost of a full-time hire.
+HOW IT WORKS
+Simple, no-obligation process
+01
+Get in Touch
+A quick call or email to tell me a bit about your business and what you're struggling with.
+02
+Free Chat
+No obligation conversation to work out whether and how I can help. No pressure, no jargon.
+03
+Tailored Plan
+If it's a good fit, we agree on a flexible plan of support that matches your actual needs.
+04
+Get Organised
+Practical, hands-on support that makes a real difference to how your business operates.
+CONTACT
+Let's have a chat
+Whether you have a specific problem in mind or just a nagging sense that things could be better organised — I'm happy to talk it through. No commitment required.
+SEND AN EMAIL
+Get in touch
+Happy to chat — no obligation
+✉️
+EMAIL
+[email protected]
+📞
+PHONE
+07732 867230
+📍
+LOCATION
+Based in Omagh, Northern Ireland
+Services are flexible — get in touch to see if I can help.
+Colleen Murphy
+Project Manager · Practical Business Support
+📍 Omagh, Northern Ireland

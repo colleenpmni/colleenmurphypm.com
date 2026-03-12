@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Tools for Construction Businesses | Colleen Murphy</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --steel:   #16202e;
+  --deep:    #0e1720;
+  --mid:     #1e2d3e;
+  --amber:   #c9a84c;
+  --amber-l: #e8c96a;
+  --off:     #f0ebe3;
+  --muted:   #7a8fa8;
+  --border:  rgba(201,168,76,0.18);
+  --green:   #2e7d52;
+  --orange:  #c97a2a;
+  --red:     #b03030;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--off);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg, transparent, transparent 79px,
+    rgba(255,255,255,0.006) 79px, rgba(255,255,255,0.006) 80px
+  );
+  pointer-events: none; z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(14,23,32,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  height: 60px;
+}
+.nav-logo { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.06em; color:var(--off); text-decoration:none; }
+.nav-logo span { color:var(--amber); }
+.nav-back { font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+.nav-back:hover { color:var(--amber); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; z-index: 1;
+  padding: 72px 48px 56px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--steel) 0%, var(--deep) 60%);
+}
+.hero-label { font-size:10px; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:var(--amber); margin-bottom:16px; }
+.hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7vw,90px); line-height:.92; color:var(--off); }
+.hero h1 em { color:var(--amber); font-style:normal; }
+.hero-sub { font-size:16px; font-weight:300; color:var(--muted); margin-top:20px; max-width:540px; line-height:1.65; font-style:italic; }
+.tool-pills { display:flex; gap:12px; margin-top:32px; flex-wrap:wrap; }
+.pill { padding:7px 18px; border:1px solid var(--border); font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); cursor:pointer; transition:all .2s; text-decoration:none; }
+.pill:hover, .pill.active { border-color:var(--amber); color:var(--amber); background:rgba(201,168,76,.06); }
+
+/* ── LAYOUT ── */
+.page { position:relative; z-index:1; max-width:860px; margin:0 auto; padding:0 48px 80px; }
+
+.tool-section { padding-top:64px; }
+.tool-header { margin-bottom:36px; }
+.tool-number { font-family:'Bebas Neue',sans-serif; font-size:80px; color:rgba(201,168,76,.1); line-height:1; margin-bottom:-12px; }
+.tool-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,5vw,52px); color:var(--off); line-height:1; }
+.tool-desc { font-size:14px; font-weight:300; color:var(--muted); margin-top:10px; line-height:1.7; max-width:560px; }
+
+/* ── CARD ── */
+.card {
+  background: var(--steel);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--amber);
+  padding: 36px 36px 32px;
+  margin-bottom: 16px;
+}
+
+/* ── QUIZ ── */
+.quiz-progress { display:flex; gap:6px; margin-bottom:32px; }
+.quiz-pip { height:3px; flex:1; background:rgba(201,168,76,.2); transition:background .3s; }
+.quiz-pip.done { background:var(--amber); }
+
+.quiz-q { font-size:18px; font-weight:500; color:var(--off); line-height:1.4; margin-bottom:8px; }
+.quiz-hint { font-size:13px; font-weight:300; color:var(--muted); margin-bottom:28px; font-style:italic; }
+
+.quiz-options { display:flex; flex-direction:column; gap:10px; }
+.quiz-opt {
+  display:flex; align-items:center; gap:14px;
+  padding:14px 18px;
+  border:1px solid var(--border);
+  background:var(--deep);
+  cursor:pointer;
+  transition:all .18s;
+  font-size:14px; font-weight:400; color:var(--off);
+}
+.quiz-opt:hover { border-color:var(--amber); background:rgba(201,168,76,.05); }
+.quiz-opt.selected { border-color:var(--amber); background:rgba(201,168,76,.1); color:var(--amber); }
+.quiz-opt-dot { width:16px; height:16px; border:2px solid var(--muted); border-radius:50%; flex-shrink:0; transition:all .18s; }
+.quiz-opt.selected .quiz-opt-dot { background:var(--amber); border-color:var(--amber); }
+
+.quiz-nav { display:flex; justify-content:space-between; align-items:center; margin-top:28px; }
+.btn { padding:11px 28px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; cursor:pointer; transition:all .2s; border:none; font-family:'DM Sans',sans-serif; }
+.btn-primary { background:var(--amber); color:var(--steel); }
+.btn-primary:hover { background:var(--amber-l); }
+.btn-primary:disabled { opacity:.35; cursor:not-allowed; }
+.btn-ghost { background:transparent; border:1px solid var(--border); color:var(--muted); }
+.btn-ghost:hover { border-color:var(--amber); color:var(--amber); }
+
+/* Quiz result */
+.quiz-result { display:none; }
+.result-score-wrap { display:flex; align-items:center; gap:24px; margin-bottom:28px; }
+.result-dial { width:90px; height:90px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:32px; flex-shrink:0; }
+.result-label { font-family:'Bebas Neue',sans-serif; font-size:32px; line-height:1; }
+.result-label span { display:block; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:400; color:var(--muted); margin-top:4px; font-style:italic; }
+
+.result-items { display:flex; flex-direction:column; gap:8px; margin:24px 0; }
+.result-item { display:flex; gap:12px; align-items:flex-start; padding:12px 16px; background:var(--deep); border-left:3px solid transparent; font-size:14px; color:var(--off); line-height:1.5; }
+.result-item.good { border-color:#2e7d52; }
+.result-item.warn { border-color:#c97a2a; }
+.result-item.bad  { border-color:#b03030; }
+.result-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+
+.result-cta { background:rgba(201,168,76,.08); border:1px solid var(--border); border-left:3px solid var(--amber); padding:20px 22px; margin-top:20px; }
+.result-cta p { font-size:14px; color:var(--off); line-height:1.6; font-style:italic; margin-bottom:12px; }
+.result-cta a { display:inline-block; background:var(--amber); color:var(--steel); padding:10px 24px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; }
+
+/* ── ESTIMATOR ── */
+.est-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+.est-group { display:flex; flex-direction:column; gap:6px; }
+.est-group.full { grid-column:1/-1; }
+.est-label { font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); }
+.est-label span { font-weight:400; color:var(--muted); text-transform:none; letter-spacing:0; font-size:11px; }
+
+.est-input-wrap { position:relative; }
+.est-prefix { position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:14px; color:var(--muted); font-weight:500; pointer-events:none; }
+.est-input {
+  width:100%; padding:11px 12px 11px 26px;
+  background:var(--deep); border:1px solid var(--border);
+  color:var(--amber); font-size:15px; font-weight:500;
+  font-family:'DM Sans',sans-serif;
+  outline:none; transition:border-color .2s;
+  -moz-appearance:textfield;
+}
+.est-input::-webkit-outer-spin-button,
+.est-input::-webkit-inner-spin-button { -webkit-appearance:none; }
+.est-input:focus { border-color:var(--amber); }
+.est-input::placeholder { color:rgba(122,143,168,.4); font-weight:300; }
+
+.est-divider { height:1px; background:var(--border); margin:8px 0 20px; }
+
+/* Results panel */
+.est-result {
+  background:var(--deep); border:1px solid var(--border);
+  border-top:3px solid var(--amber);
+  padding:28px 28px 24px; margin-top:24px;
+}
+.est-result-title { font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--amber); margin-bottom:20px; letter-spacing:.04em; }
+
+.est-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:20px; }
+.metric { background:var(--steel); padding:18px 16px; }
+.metric-label { font-size:9px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.metric-value { font-family:'Bebas Neue',sans-serif; font-size:32px; line-height:1; }
+.metric-value.green  { color:#4caf7d; }
+.metric-value.orange { color:#e8973a; }
+.metric-value.red    { color:#e05555; }
+.metric-value.neutral { color:var(--off); }
+
+.margin-bar-wrap { margin-bottom:20px; }
+.margin-bar-labels { display:flex; justify-content:space-between; font-size:10px; color:var(--muted); margin-bottom:6px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+.margin-bar-track { height:10px; background:var(--mid); position:relative; }
+.margin-bar-fill { height:100%; background:var(--amber); transition:width .6s ease; max-width:100%; }
+.margin-bar-zones { display:flex; justify-content:space-between; font-size:9px; margin-top:4px; }
+.zone-label { color:var(--muted); }
+
+.est-verdict { padding:16px 18px; border-left:3px solid var(--amber); background:rgba(201,168,76,.06); }
+.est-verdict-text { font-size:14px; color:var(--off); line-height:1.65; }
+.est-verdict strong { color:var(--amber); }
+
+.est-breakdown { margin-top:16px; }
+.breakdown-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.breakdown-row:last-child { border-bottom:none; }
+.breakdown-label { color:var(--muted); }
+.breakdown-value { font-weight:500; color:var(--off); }
+.breakdown-pct { font-size:11px; color:var(--muted); margin-left:8px; }
+
+/* ── FOOTER ── */
+.tools-footer {
+  position:relative; z-index:1;
+  background:#0a1018; border-top:3px solid var(--amber);
+  padding:24px 48px; text-align:center;
+}
+.tools-footer p { font-size:12px; color:var(--muted); }
+.tools-footer a { color:var(--amber); text-decoration:none; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px) {
+  nav { padding:0 20px; }
+  .hero { padding:56px 20px 40px; }
+  .page { padding:0 20px 60px; }
+  .card { padding:24px 20px; }
+  .est-grid { grid-template-columns:1fr; }
+  .est-metrics { grid-template-columns:1fr 1fr; }
+  .est-metrics .metric:last-child { grid-column:1/-1; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Colleen <span>Murphy</span></a>
+  <a href="index.html" class="nav-back">← Back to Main Site</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Free Tools · Construction Business Support</div>
+  <h1>Know your<br>numbers.<br><em>Free.</em></h1>
+  <div class="hero-sub">Two tools built specifically for construction and trades businesses in Northern Ireland. No signup, no catch.</div>
+  <div class="tool-pills">
+    <a class="pill active" href="#quiz">01 · Business Health Check</a>
+    <a class="pill" href="#estimator">02 · Job Margin Estimator</a>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ════════════════════════════════════
+       TOOL 1 — QUIZ
+  ═════════════════════════════════════ -->
+  <div class="tool-section" id="quiz">
+    <div class="tool-header">
+      <div class="tool-number">01</div>
+      <div class="tool-title">Business Health Check</div>
+      <div class="tool-desc">6 quick questions. Find out how well-organised your construction business actually is — and where the gaps are costing you time and money.</div>
+    </div>
+
+    <div class="card" id="quiz-card">
+      <!-- Progress -->
+      <div class="quiz-progress" id="quiz-progress"></div>
+
+      <!-- Questions -->
+      <div id="quiz-questions">
+        <div class="quiz-q" id="q-text"></div>
+        <div class="quiz-hint" id="q-hint"></div>
+        <div class="quiz-options" id="q-options"></div>
+        <div class="quiz-nav">
+          <button class="btn btn-ghost" id="q-back" onclick="quizBack()">← Back</button>
+          <button class="btn btn-primary" id="q-next" onclick="quizNext()" disabled>Next →</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-result" id="quiz-result"></div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════
+       TOOL 2 — ESTIMATOR
+  ═════════════════════════════════════ -->
+  <div class="tool-section" id="estimator">
+    <div class="tool-header">
+      <div class="tool-number">02</div>
+      <div class="tool-title">Job Margin Estimator</div>
+      <div class="tool-desc">Enter your job figures and instantly see your gross margin — benchmarked against what a well-run construction business should be making on each job type.</div>
+    </div>
+
+    <div class="card">
+      <div class="est-grid">
+        <div class="est-group full">
+          <label class="est-label">Job Type <span>— affects benchmark margin</span></label>
+          <select class="est-input" id="job-type" onchange="calcMargin()" style="padding-left:12px; cursor:pointer; color:var(--off);">
+            <option value="general">General Build / Groundworks</option>
+            <option value="fitout">Fit-Out / Finishing</option>
+            <option value="joinery">Joinery / Carpentry</option>
+            <option value="trades">Specialist Trades (Electrical, Plumbing etc.)</option>
+            <option value="civils">Civil Engineering / Civils</option>
+          </select>
+        </div>
+
+        <div class="est-group full">
+          <label class="est-label">Contract Value <span>— ex VAT</span></label>
+          <div class="est-input-wrap">
+            <span class="est-prefix">£</span>
+            <input class="est-input" type="number" id="contract-val" placeholder="e.g. 45000" oninput="calcMargin()">
+          </div>
+        </div>
+      </div>
+
+      <div class="est-divider"></div>
+      <div style="font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--amber); margin-bottom:14px;">Cost Breakdown</div>
+
+      <div class="est-grid">
+        <div class="est-group">
+          <label class="est-label">Labour <span>— wages & your own time</span></label>
+          <div class="est-input-wrap">
+            <span class="est-prefix">£</span>
+            <input class="est-input" type="number" id="cost-labour" placeholder="0" oninput="calcMargin()">
+          </div>
+        </div>
+        <div class="est-group">
+          <label class="est-label">Materials</label>
+          <div class="est-input-wrap">
+            <span class="est-prefix">£</span>
+            <input class="est-input" type="number" id="cost-materials" placeholder="0" oninput="calcMargin()">
+          </div>
+        </div>
+        <div class="est-group">
+          <label class="est-label">Plant & Equipment</label>
+          <div class="est-input-wrap">
+            <span class="est-prefix">£</span>
+            <input class="est-input" type="number" id="cost-plant" placeholder="0" oninput="calcMargin()">
+          </div>
+        </div>
+        <div class="est-group">
+          <label class="est-label">Subcontractors</label>
+          <div class="est-input-wrap">
+            <span class="est-prefix">£</span>
+            <input class="est-input" type="number" id="cost-sub" placeholder="0" oninput="calcMargin()">
+          </div>
+        </div>
+        <div class="est-group full">
+          <label class="est-label">Prelims / Site Overheads <span>— site hut, skips, welfare, insurance etc.</span></label>
+          <div class="est-input-wrap">
+            <span class="est-prefix">£</span>
+            <input class="est-input" type="number" id="cost-prelims" placeholder="0" oninput="calcMargin()">
+          </div>
+        </div>
+        <div class="est-group full">
+          <label class="est-label">Variations <span>— additional works agreed (positive = extra income)</span></label>
+          <div class="est-input-wrap">
+            <span class="est-prefix">£</span>
+            <input class="est-input" type="number" id="variations" placeholder="0" oninput="calcMargin()">
+          </div>
+        </div>
+      </div>
+
+      <!-- Live results -->
+      <div class="est-result" id="est-result" style="display:none;">
+        <div class="est-result-title">JOB SUMMARY</div>
+
+        <div class="est-metrics">
+          <div class="metric">
+            <div class="metric-label">Revised Contract</div>
+            <div class="metric-value neutral" id="r-contract">—</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Gross Profit</div>
+            <div class="metric-value" id="r-gp">—</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Margin %</div>
+            <div class="metric-value" id="r-margin">—</div>
+          </div>
+        </div>
+
+        <div class="margin-bar-wrap">
+          <div class="margin-bar-labels">
+            <span>0%</span>
+            <span id="bar-benchmark-label">Benchmark</span>
+            <span>40%+</span>
+          </div>
+          <div class="margin-bar-track">
+            <div class="margin-bar-fill" id="margin-bar" style="width:0%"></div>
+          </div>
+          <div class="margin-bar-zones">
+            <span class="zone-label">Below target</span>
+            <span class="zone-label">Healthy</span>
+            <span class="zone-label">Strong</span>
+          </div>
+        </div>
+
+        <div class="est-verdict" id="est-verdict"></div>
+
+        <div class="est-breakdown" id="est-breakdown"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; padding:20px 22px; border:1px solid var(--border); border-left:3px solid var(--amber); background:rgba(201,168,76,.04);">
+      <p style="font-size:13px; color:var(--muted); line-height:1.65; font-style:italic;">Want a full job cost tracking spreadsheet? <a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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" download="Job_Cost_Tracker_Free_ColleenMurphy.xlsx" style="color:var(--amber);">Download the free template</a> — or get in touch if you want help setting up proper cost reporting across all your jobs.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="tools-footer">
+  <p>Built by <a href="index.html">Colleen Murphy</a> · Construction Business Support · <a href="mailto:colleenpmni@gmail.com">colleenpmni@gmail.com</a> · <a href="tel:07732867230">07732 867230</a></p>
+</div>
+
+
+<script>
+// ═══════════════════════════════════════
+//  QUIZ LOGIC
+// ═══════════════════════════════════════
+
+const questions = [
+  {
+    q: "When a job finishes, how quickly do you know whether it made or lost money?",
+    hint: "Be honest — this is just for you.",
+    opts: [
+      { text: "Within a week — I track costs as we go",   score: 3 },
+      { text: "Eventually, once the invoices come in",    score: 2 },
+      { text: "Not really — I get a rough sense",         score: 1 },
+      { text: "Honestly, I rarely know until the accountant does the year end", score: 0 },
+    ]
+  },
+  {
+    q: "How do you track variations and extras on a job?",
+    hint: "Variations are one of the biggest sources of margin leakage in construction.",
+    opts: [
+      { text: "Logged and invoiced properly every time",           score: 3 },
+      { text: "I keep track but invoicing them is hit and miss",   score: 2 },
+      { text: "Mostly in my head or on texts / WhatsApp",         score: 1 },
+      { text: "I often end up doing work and forgetting to charge", score: 0 },
+    ]
+  },
+  {
+    q: "How do you manage subcontractor payments?",
+    hint: "",
+    opts: [
+      { text: "Scheduled and tracked — I know exactly what's owed and when", score: 3 },
+      { text: "Tracked loosely, paid when they invoice me",                  score: 2 },
+      { text: "Reactive — I pay when they chase",                           score: 1 },
+      { text: "It's a bit chaotic, I'll be honest",                         score: 0 },
+    ]
+  },
+  {
+    q: "If I asked you right now what your busiest job is costing vs what you quoted — could you tell me?",
+    hint: "",
+    opts: [
+      { text: "Yes, within about 10% accuracy",           score: 3 },
+      { text: "Roughly — I have a feel for it",           score: 2 },
+      { text: "Not without spending an hour digging",     score: 1 },
+      { text: "No chance",                                score: 0 },
+    ]
+  },
+  {
+    q: "How does your team know what needs doing on a job each day?",
+    hint: "",
+    opts: [
+      { text: "Written programme or schedule they can refer to", score: 3 },
+      { text: "Weekly briefing — verbal but consistent",         score: 2 },
+      { text: "I tell people what to do as needed",             score: 1 },
+      { text: "It's a bit whoever asks first",                  score: 0 },
+    ]
+  },
+  {
+    q: "When things go wrong on a job, how do you find out?",
+    hint: "This tells you a lot about how much control you have over your business.",
+    opts: [
+      { text: "Early — I have reporting or check-ins that surface issues quickly", score: 3 },
+      { text: "Usually within a day or two",                                        score: 2 },
+      { text: "When it becomes a problem I can't ignore",                          score: 1 },
+      { text: "Often too late to fix cheaply",                                     score: 0 },
+    ]
+  },
+];
+
+let current = 0;
+let answers = [];
+let selected = null;
+
+function buildProgress() {
+  const el = document.getElementById('quiz-progress');
+  el.innerHTML = questions.map((_, i) =>
+    `<div class="quiz-pip ${i < current ? 'done' : ''}" id="pip-${i}"></div>`
+  ).join('');
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('q-hint').textContent = q.hint;
+  document.getElementById('q-hint').style.display = q.hint ? 'block' : 'none';
+
+  const opts = document.getElementById('q-options');
+  opts.innerHTML = q.opts.map((o, i) => `
+    <div class="quiz-opt" id="opt-${i}" onclick="selectOpt(${i})">
+      <div class="quiz-opt-dot"></div>
+      <span>${o.text}</span>
+    </div>
+  `).join('');
+
+  selected = answers[current] !== undefined ? answers[current] : null;
+  if (selected !== null) {
+    document.getElementById(`opt-${selected}`).classList.add('selected');
+  }
+
+  document.getElementById('q-back').style.visibility = current === 0 ? 'hidden' : 'visible';
+  document.getElementById('q-next').textContent = current === questions.length - 1 ? 'See My Results →' : 'Next →';
+  document.getElementById('q-next').disabled = selected === null;
+  buildProgress();
+}
+
+function selectOpt(i) {
+  selected = i;
+  document.querySelectorAll('.quiz-opt').forEach(el => el.classList.remove('selected'));
+  document.getElementById(`opt-${i}`).classList.add('selected');
+  document.getElementById('q-next').disabled = false;
+}
+
+function quizNext() {
+  if (selected === null) return;
+  answers[current] = selected;
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function quizBack() {
+  if (current > 0) { current--; renderQuestion(); }
+}
+
+function showResult() {
+  const total = answers.reduce((s, a, i) => s + questions[i].opts[a].score, 0);
+  const max = questions.length * 3;
+  const pct = Math.round((total / max) * 100);
+
+  document.getElementById('quiz-questions').style.display = 'none';
+  document.getElementById('quiz-progress').style.display = 'none';
+
+  let level, colour, bgCol, items, ctaText;
+
+  if (pct >= 75) {
+    level = 'Well Organised';
+    colour = '#4caf7d';
+    bgCol = 'rgba(46,125,82,0.15)';
+    items = [
+      { type:'good', icon:'✓', text:'Your cost visibility is strong. You know where jobs stand financially.' },
+      { type:'good', icon:'✓', text:'Variations are being captured and invoiced consistently.' },
+      { type:'warn', icon:'→', text:'Even well-run businesses have room to tighten margins. A fresh set of eyes often finds 2–3% you\'re leaving on the table.' },
+    ];
+    ctaText = 'Your business is running well — but there\'s always more margin to protect. If you want a fresh look at your systems, I\'m happy to have a conversation.';
+  } else if (pct >= 45) {
+    level = 'Getting There';
+    colour = '#e8973a';
+    bgCol = 'rgba(201,122,42,0.15)';
+    items = [
+      { type:'warn', icon:'→', text:'You have some systems in place but gaps are costing you — probably on variations and cost visibility.' },
+      { type:'warn', icon:'→', text:'You\'re likely losing 3–8% margin per job through under-invoicing and poor cost tracking.' },
+      { type:'bad',  icon:'!', text:'As your business grows, these gaps get bigger and harder to fix. Now is the right time to sort them.' },
+    ];
+    ctaText = 'You\'re not far off — but the gaps in your systems are costing you real money on every job. A conversation about where to focus would be worth 30 minutes of your time.';
+  } else {
+    level = 'Time to Sort This';
+    colour = '#e05555';
+    bgCol = 'rgba(176,48,48,0.15)';
+    items = [
+      { type:'bad', icon:'!', text:'Your business is running on instinct and memory. That works until it doesn\'t.' },
+      { type:'bad', icon:'!', text:'You are almost certainly losing margin on every job — through missed variations, poor cost tracking, and reactive management.' },
+      { type:'bad', icon:'!', text:'The good news: the fixes are not complicated. They just need to be put in place properly.' },
+    ];
+    ctaText = 'This is exactly the kind of situation I help with. A short conversation could save you more than you\'d expect. No pressure — just an honest chat about what\'s possible.';
+  }
+
+  const resultEl = document.getElementById('quiz-result');
+  resultEl.innerHTML = `
+    <div class="result-score-wrap">
+      <div class="result-dial" style="background:${bgCol}; border:3px solid ${colour}; color:${colour};">${pct}%</div>
+      <div>
+        <div class="result-label" style="color:${colour};">${level}<span>${total} out of ${max} — ${pct}% organised</span></div>
+      </div>
+    </div>
+    <div class="result-items">
+      ${items.map(it => `<div class="result-item ${it.type}"><span class="result-icon">${it.icon}</span><span>${it.text}</span></div>`).join('')}
+    </div>
+    <div class="result-cta">
+      <p>${ctaText}</p>
+      <a href="mailto:colleenpmni@gmail.com">Get in Touch — No Obligation</a>
+    </div>
+    <div style="margin-top:20px; text-align:center;">
+      <button class="btn btn-ghost" onclick="resetQuiz()" style="font-size:10px;">Retake Quiz</button>
+    </div>
+  `;
+  resultEl.style.display = 'block';
+}
+
+function resetQuiz() {
+  current = 0; answers = []; selected = null;
+  document.getElementById('quiz-questions').style.display = 'block';
+  document.getElementById('quiz-progress').style.display = 'flex';
+  document.getElementById('quiz-result').style.display = 'none';
+  renderQuestion();
+}
+
+// Init quiz
+renderQuestion();
+
+
+// ═══════════════════════════════════════
+//  ESTIMATOR LOGIC
+// ═══════════════════════════════════════
+
+const benchmarks = {
+  general: { min: 12, mid: 16, label: 'General Build / Groundworks' },
+  fitout:  { min: 15, mid: 22, label: 'Fit-Out / Finishing' },
+  joinery: { min: 18, mid: 25, label: 'Joinery / Carpentry' },
+  trades:  { min: 20, mid: 28, label: 'Specialist Trades' },
+  civils:  { min: 10, mid: 15, label: 'Civil Engineering' },
+};
+
+function fmt(n) {
+  if (isNaN(n) || n === null) return '—';
+  const abs = Math.abs(n);
+  const s = abs >= 1000 ? '£' + abs.toLocaleString('en-GB', {minimumFractionDigits:0, maximumFractionDigits:0})
+                        : '£' + abs.toFixed(0);
+  return n < 0 ? '(' + s + ')' : s;
+}
+
+function calcMargin() {
+  const cv       = parseFloat(document.getElementById('contract-val').value) || 0;
+  const labour   = parseFloat(document.getElementById('cost-labour').value)  || 0;
+  const mats     = parseFloat(document.getElementById('cost-materials').value)||0;
+  const plant    = parseFloat(document.getElementById('cost-plant').value)   || 0;
+  const sub      = parseFloat(document.getElementById('cost-sub').value)     || 0;
+  const prelims  = parseFloat(document.getElementById('cost-prelims').value) || 0;
+  const vars     = parseFloat(document.getElementById('variations').value)   || 0;
+  const jobType  = document.getElementById('job-type').value;
+
+  if (cv === 0) { document.getElementById('est-result').style.display = 'none'; return; }
+
+  const totalCosts   = labour + mats + plant + sub + prelims;
+  const revisedCV    = cv + vars;
+  const gp           = revisedCV - totalCosts;
+  const marginPct    = revisedCV > 0 ? (gp / revisedCV) * 100 : 0;
+  const bench        = benchmarks[jobType];
+
+  document.getElementById('est-result').style.display = 'block';
+
+  // Metrics
+  document.getElementById('r-contract').textContent = fmt(revisedCV);
+
+  const gpEl = document.getElementById('r-gp');
+  gpEl.textContent = fmt(gp);
+  gpEl.className = 'metric-value ' + (gp < 0 ? 'red' : gp / revisedCV > bench.mid / 100 ? 'green' : 'orange');
+
+  const marginEl = document.getElementById('r-margin');
+  marginEl.textContent = marginPct.toFixed(1) + '%';
+  marginEl.className = 'metric-value ' + (marginPct < 0 ? 'red' : marginPct >= bench.mid ? 'green' : marginPct >= bench.min ? 'orange' : 'red');
+
+  // Bar — scale to 40% max
+  const barPct = Math.min(Math.max(marginPct / 40 * 100, 0), 100);
+  document.getElementById('margin-bar').style.width = barPct + '%';
+  document.getElementById('margin-bar').style.background =
+    marginPct >= bench.mid ? '#4caf7d' : marginPct >= bench.min ? '#e8973a' : '#e05555';
+  document.getElementById('bar-benchmark-label').textContent =
+    `Target ${bench.min}–${bench.mid}%`;
+
+  // Verdict
+  let verdictHtml = '';
+  if (marginPct < 0) {
+    verdictHtml = `<span class="est-verdict-text">⚠ <strong>This job is losing money.</strong> Your costs exceed your contract value by ${fmt(Math.abs(gp))}. This needs immediate attention — review whether all variations have been invoiced and whether cost overruns can be recovered.</span>`;
+  } else if (marginPct < bench.min) {
+    verdictHtml = `<span class="est-verdict-text">⚠ <strong>Below target for ${bench.label}.</strong> Healthy margin for this job type is ${bench.min}–${bench.mid}%. You're at ${marginPct.toFixed(1)}% — that's a gap of approximately ${fmt((bench.min / 100) * revisedCV - gp)} to get to the minimum benchmark. Check whether all variations have been invoiced and whether any costs can be reduced.</span>`;
+  } else if (marginPct < bench.mid) {
+    verdictHtml = `<span class="est-verdict-text">✓ <strong>Acceptable margin for ${bench.label}.</strong> You're within the healthy range (${bench.min}–${bench.mid}%) but there's room to improve. Getting to ${bench.mid}% would add ${fmt(((bench.mid / 100) * revisedCV) - gp)} to your profit on this job.</span>`;
+  } else {
+    verdictHtml = `<span class="est-verdict-text">✓ <strong>Strong margin for ${bench.label}.</strong> At ${marginPct.toFixed(1)}% you're above the ${bench.mid}% benchmark. Make sure you're tracking costs closely to protect this margin through to completion.</span>`;
+  }
+  document.getElementById('est-verdict').innerHTML = verdictHtml;
+
+  // Breakdown
+  const rows = [
+    ['Labour',            labour,   labour / totalCosts],
+    ['Materials',         mats,     mats / totalCosts],
+    ['Plant & Equipment', plant,    plant / totalCosts],
+    ['Subcontractors',    sub,      sub / totalCosts],
+    ['Prelims / Overheads', prelims, prelims / totalCosts],
+  ].filter(([_, v]) => v > 0);
+
+  rows.push(['TOTAL COSTS', totalCosts, 1]);
+
+  const bdHtml = rows.map(([label, val, pct], i) => {
+    const isTot = i === rows.length - 1;
+    return `<div class="breakdown-row" style="${isTot ? 'border-top:1px solid var(--amber);margin-top:4px;padding-top:12px;' : ''}">
+      <span class="breakdown-label" style="${isTot ? 'color:var(--off);font-weight:600;' : ''}">${label}</span>
+      <span class="breakdown-value">${fmt(val)}<span class="breakdown-pct">${totalCosts > 0 && !isTot ? '(' + (pct*100).toFixed(0) + '% of costs)' : ''}</span></span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('est-breakdown').innerHTML = bdHtml;
+}
+</script>
+</body>
+</html>

@@ -1,886 +1,1495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Colleen Murphy | Business Systems & Process Improvement</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --steel:    #16202e;
-    --deep:     #0e1720;
-    --mid:      #1e2d3e;
-    --amber:    #c9a84c;
-    --offwhite: #f0ebe3;
-    --muted:    #7a8fa8;
-    --border:   rgba(201,168,76,0.2);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--deep);
-    font-family: 'DM Sans', sans-serif;
-    color: var(--offwhite);
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      90deg,
-      transparent, transparent 79px,
-      rgba(255,255,255,0.008) 79px,
-      rgba(255,255,255,0.008) 80px
-    );
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(14,23,32,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 64px;
-  }
-
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 0.06em;
-    color: var(--offwhite);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--amber); }
-
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-
-  .nav-links a {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--amber); }
-
-  .nav-cta {
-    background: var(--amber);
-    color: var(--steel) !important;
-    padding: 8px 20px;
-    font-size: 11px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.14em !important;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .nav-cta:hover { opacity: 0.85; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 120px 60px 80px;
-    position: relative;
-    z-index: 1;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-eyebrow {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.2s forwards;
-  }
-
-  .hero-headline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 10vw, 130px);
-    line-height: 0.88;
-    color: var(--offwhite);
-    letter-spacing: 0.01em;
-    max-width: 900px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.35s forwards;
-  }
-  .hero-headline em { color: var(--amber); font-style: normal; }
-
-  .hero-tagline {
-    font-size: clamp(18px, 2.2vw, 24px);
-    font-style: italic;
-    font-weight: 300;
-    color: var(--offwhite);
-    opacity: 0;
-    margin-top: 36px;
-    max-width: 600px;
-    animation: fadeUp 0.7s ease 0.5s forwards;
-    line-height: 1.5;
-  }
-
-  /* Construction trust line */
-  .hero-trust {
-    margin-top: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.6s forwards;
-  }
-  .hero-trust span { color: var(--amber); }
-
-  .hero-strip {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-top: 48px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.65s forwards;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    margin-top: 48px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.8s forwards;
-  }
-
-  .btn-primary {
-    background: var(--amber);
-    color: var(--steel);
-    padding: 14px 32px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .btn-primary:hover { opacity: 0.85; }
-
-  .btn-secondary {
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 14px 32px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-secondary:hover { border-color: var(--amber); color: var(--amber); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* SECTIONS */
-  section { position: relative; z-index: 1; }
-
-  .section-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 100px 60px;
-  }
-
-  .section-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 6vw, 72px);
-    line-height: 0.9;
-    color: var(--offwhite);
-    letter-spacing: 0.01em;
-    margin-bottom: 48px;
-  }
-
-  .section-divider {
-    height: 1px;
-    background: var(--border);
-    margin-bottom: 48px;
-  }
-
-  /* ABOUT */
-  #about { background: var(--steel); border-bottom: 1px solid var(--border); }
-
-  .about-grid {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automate and Elevate | Business Systems and Operations | Northern Ireland</title>
+  <meta name="description" content="Automate and Elevate helps small businesses and construction companies across Northern Ireland streamline their operations, automate admin and free up the owner's time. Based in Omagh.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Automate and Elevate | Business Systems &amp; Operations">
+  <meta property="og:description" content="Practical, hands-on operations support for SMEs and construction businesses in Northern Ireland. Streamline your systems, automate admin, reclaim your time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://automate-elevate.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    :root {
+      --steel:    #16202e;
+      --deep:     #0e1720;
+      --mid:      #1e2d3e;
+      --amber:    #c9a84c;
+      --offwhite: #f0ebe3;
+      --muted:    #7a8fa8;
+      --border:   rgba(201,168,76,0.2);
+    }
+ 
+    html { scroll-behavior: smooth; }
+ 
+    body {
+      background: var(--deep);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--offwhite);
+      overflow-x: hidden;
+    }
+ 
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent, transparent 79px,
+        rgba(255,255,255,0.008) 79px,
+        rgba(255,255,255,0.008) 80px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+ 
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(14,23,32,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+ 
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0;
+      color: var(--offwhite);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+ 
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo .logo-text { color: var(--offwhite); }
+    .nav-logo .logo-dash { color: var(--amber); }
+ 
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+ 
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+ 
+    .nav-links a:hover { color: var(--amber); }
+ 
+    .nav-cta {
+      background: var(--amber);
+      color: var(--steel) !important;
+      padding: 8px 20px;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+ 
+    .nav-cta:hover { opacity: 0.85; }
+ 
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+ 
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 10vw, 130px);
+      line-height: 0.92;
+      color: var(--offwhite);
+      letter-spacing: 0.01em;
+      max-width: 900px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.35s forwards;
+    }
+ 
+    .hero-headline em { color: var(--amber); font-style: normal; }
+ 
+    .hero-subline {
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 400;
+      color: var(--offwhite);
+      opacity: 0;
+      margin-top: 24px;
+      max-width: 560px;
+      animation: fadeUp 0.7s ease 0.5s forwards;
+      line-height: 1.5;
+    }
+ 
+    .hero-microline {
+      font-size: clamp(13px, 1.4vw, 15px);
+      font-weight: 300;
+      color: var(--muted);
+      opacity: 0;
+      margin-top: 12px;
+      max-width: 520px;
+      animation: fadeUp 0.7s ease 0.6s forwards;
+      line-height: 1.5;
+      font-style: italic;
+    }
+ 
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.8s forwards;
+    }
+ 
+    .btn-primary {
+      background: var(--amber);
+      color: var(--steel);
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+ 
+    .btn-primary:hover { opacity: 0.85; }
+ 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+ 
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 60px;
+    }
+ 
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 16px;
+    }
+ 
+    .section-title { 
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 6vw, 72px);
+      line-height: 0.9;
+      color: var(--offwhite);
+      letter-spacing: 0.01em;
+      margin-bottom: 48px;
+    }
+ 
+    .section-title em {
+      color: var(--amber);
+      font-style: normal;
+    }
+ 
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 48px;
+    }
+ 
+    .framework-marker {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0.5;
+      margin-bottom: 6px;
+    }
+ 
+    /* ── PAIN POINTS ── */
+    #pain {
+      background: var(--steel);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .pain-intro {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 48px;
+      font-style: italic;
+      padding-left: 20px;
+      border-left: 3px solid var(--amber);
+    }
+ 
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+ 
+    .pain-card {
+      background: var(--deep);
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s;
+    }
+ 
+    .pain-card:hover { border-color: var(--amber); }
+ 
+    .pain-icon {
+      font-size: 18px;
+      color: var(--amber);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+ 
+    .pain-card p {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--offwhite);
+      line-height: 1.4;
+    }
+ 
+    .about-tagline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+      opacity: 0.85;
+    }
+ 
+    /* ── ABOUT PHOTO ── */
+    .about-profile {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .about-photo-wrap {
+      flex-shrink: 0;
+    }
+ 
+    .about-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid var(--amber);
+      display: block;
+    }
+ 
+    .about-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--offwhite);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+ 
+    .about-title-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 4px;
+    }
+ 
+    .about-location {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+ 
+    /* ── ABOUT ── */
+    #about {
+      background: var(--deep);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+ 
+    .about-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+ 
+    .about-text p strong {
+      color: var(--offwhite);
+      font-weight: 500;
+    }
+ 
+    .quals {
+      margin-top: 24px;
+      padding: 20px 24px;
+      border: 1px solid var(--border);
+      background: rgba(201,168,76,0.03);
+    }
+ 
+    .quals-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 12px;
+    }
+ 
+    .quals-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+ 
+    .qual-tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      letter-spacing: 0.06em;
+    }
+ 
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+ 
+    .stat-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .stat-row:first-child { border-top: 1px solid var(--border); }
+ 
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--amber);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 80px;
+    }
+ 
+    .stat-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--offwhite);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      margin-top: 6px;
+    }
+ 
+    .stat-text span {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+ 
+    /* ── SERVICES ── */
+    #services {
+      background: var(--steel);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .services-intro {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 56px;
+      font-style: italic;
+      padding-left: 20px;
+      border-left: 3px solid var(--amber);
+    }
+ 
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 48px;
+    }
+ 
+    .s-card {
+      background: var(--deep);
+      padding: 32px 28px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.2s;
+    }
+ 
+    .s-card:hover { border-color: var(--amber); }
+ 
+    .s-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: rgba(201,168,76,0.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+ 
+    .s-card strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--offwhite);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+ 
+    .s-card p {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+ 
+    /* ── PACKAGES ── */
+    #packages {
+      background: var(--deep);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .packages-intro {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 56px;
+      font-style: italic;
+      padding-left: 20px;
+      border-left: 3px solid var(--amber);
+    }
+ 
+    .packages-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+ 
+    .pkg-card {
+      background: var(--steel);
+      padding: 28px 32px;
+      border-top: 3px solid var(--amber);
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      align-items: start;
+      gap: 32px;
+    }
+ 
+    .pkg-card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+ 
+    .pkg-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--amber);
+      line-height: 1;
+    }
+ 
+    .pkg-card strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--offwhite);
+      line-height: 1.3;
+    }
+ 
+    .pkg-headline {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--offwhite);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+ 
+    .pkg-card p {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+ 
+    .pkg-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      opacity: 0.75;
+      padding-top: 6px;
+      line-height: 1.5;
+    }
+ 
+    .pkg-bespoke {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+ 
+    .pkg-bespoke p {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--offwhite);
+      font-weight: 300;
+    }
+ 
+    /* ── AMBER BAND ── */
+    .amber-band {
+      background: var(--amber);
+      padding: 48px 60px;
+      position: relative;
+      z-index: 1;
+    }
+ 
+    .amber-band-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+ 
+    .amber-band p {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--steel);
+      line-height: 1.4;
+      max-width: 600px;
+    }
+ 
+    .amber-band p span {
+      display: block;
+      font-size: 15px;
+      font-weight: 400;
+      margin-top: 8px;
+      opacity: 0.75;
+    }
+ 
+    .amber-band a {
+      background: var(--steel);
+      color: var(--amber);
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+ 
+    .amber-band a:hover { opacity: 0.9; transform: translateX(4px); }
+ 
+    /* ── HOW IT WORKS ── */
+    #process {
+      background: var(--steel);
+      border-bottom: 1px solid var(--border);
+    }
+ 
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+ 
+    .step {
+      background: var(--deep);
+      padding: 32px 28px;
+    }
+ 
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px;
+      color: rgba(201,168,76,0.15);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+ 
+    .step strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--offwhite);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+ 
+    .step p {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+ 
+    /* ── CONTACT ── */
+    #contact { background: var(--deep); }
+ 
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+ 
+    .contact-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+ 
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+ 
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s;
+      background: var(--steel);
+    }
+ 
+    .contact-row:hover { border-color: var(--amber); }
+ 
+    .contact-icon {
+      font-size: 14px;
+      color: var(--amber);
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+ 
+    .contact-row-text strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 2px;
+    }
+ 
+    .contact-row-text span {
+      font-size: 14px;
+      color: var(--offwhite);
+      font-weight: 300;
+    }
+ 
+    .contact-cta {
+      margin-top: 40px;
+      padding: 28px 24px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--amber);
+    }
+ 
+    .contact-cta p {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--offwhite);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+ 
+    /* ── FOOTER ── */
+    footer {
+      background: #0a1018;
+      border-top: 3px solid var(--amber);
+      padding: 28px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+ 
+    .footer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--offwhite);
+      letter-spacing: 0.04em;
+    }
+ 
+    .footer-role {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-top: 3px;
+    }
+ 
+    .footer-right {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+      text-align: right;
+    }
+ 
+    .footer-right a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+ 
+    .footer-right a:hover { color: var(--amber); }
+ 
+    .footer-tools-link {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--amber);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      opacity: 0.75;
+    }
+ 
+    .footer-tools-link:hover { opacity: 1; }
+ 
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--offwhite);
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(14,23,32,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 24px 28px;
+      flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--amber); }
+    .mobile-menu .mobile-cta {
+      margin-top: 16px;
+      background: var(--amber);
+      color: var(--steel) !important;
+      padding: 14px 24px;
+      text-align: center;
+      border-bottom: none !important;
+    }
+ 
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--steel); border-bottom: 1px solid var(--border); }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .testimonial-card { background: var(--deep); padding: 36px 32px; position: relative; }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      color: var(--amber);
+      opacity: 0.15;
+      position: absolute;
+      top: 16px; left: 28px;
+      line-height: 1;
+    }
+    .testimonial-text {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--offwhite);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 24px;
+      padding-top: 24px;
+    }
+    .testimonial-author strong { display: block; font-size: 13px; font-weight: 600; color: var(--amber); letter-spacing: 0.06em; }
+    .testimonial-author span { font-size: 12px; color: var(--muted); font-weight: 300; }
+    .testimonial-placeholder { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); opacity: 0.4; margin-top: 12px; }
+ 
+    /* ── CONTACT FORM ── */
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--steel);
+      border: 1px solid var(--border);
+      color: var(--offwhite);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--amber); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--steel); }
+    .form-submit {
+      background: var(--amber);
+      color: var(--steel);
+      border: none;
+      padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      width: 100%;
+    }
+    .form-submit:hover { opacity: 0.85; }
+    .form-success {
+      display: none;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid var(--amber);
+      border-left: 3px solid var(--amber);
+      padding: 20px 24px;
+      font-size: 15px;
+      color: var(--offwhite);
+      font-style: italic;
+      line-height: 1.6;
+    }
+ 
+    /* ── PROCESS CTA ── */
+    .process-cta { margin-top: 48px; text-align: center; }
+ 
+    /* ── HERO FRAMEWORK ── */
+  .hero-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: start;
+    align-items: center;
+    width: 100%;
   }
-
-  .about-text p {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 20px;
+ 
+  .hero-left {
+    display: flex;
+    flex-direction: column;
   }
-  .about-text p strong { color: var(--offwhite); font-weight: 500; }
-
-  /* Construction credential callout */
-  .construction-credential {
-    margin-top: 32px;
-    padding: 20px 24px;
-    border-left: 3px solid var(--amber);
+ 
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.9s forwards;
+  }
+ 
+  .framework-row {
     background: rgba(201,168,76,0.04);
-  }
-  .construction-credential .cc-label {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 8px;
-  }
-  .construction-credential p {
-    font-size: 14px;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 0;
-  }
-
-  .about-stats {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--amber);
+    padding: 18px 24px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
+    transition: background 0.2s;
   }
-
-  .stat-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border);
+ 
+  .framework-row:hover {
+    background: rgba(201,168,76,0.08);
   }
-  .stat-row:first-child { border-top: 1px solid var(--border); }
-
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 52px;
-    color: var(--amber);
-    line-height: 1;
-    flex-shrink: 0;
-    width: 80px;
-  }
-
-  .stat-text strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--offwhite);
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
-    margin-top: 6px;
-  }
-  .stat-text span {
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .quals {
-    margin-top: 40px;
-    padding: 20px 24px;
-    border: 1px solid var(--border);
-    background: rgba(201,168,76,0.03);
-  }
-  .quals-label {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 12px;
-  }
-  .quals-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .qual-tag {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 5px 12px;
-    letter-spacing: 0.06em;
-  }
-
-  /* SERVICES */
-  #services { background: var(--deep); border-bottom: 1px solid var(--border); }
-
-  .services-intro {
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 620px;
-    margin-bottom: 56px;
-    font-style: italic;
-    padding-left: 20px;
-    border-left: 3px solid var(--amber);
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2px;
-    margin-bottom: 48px;
-  }
-
-  .s-card {
-    background: var(--steel);
-    padding: 32px 28px;
-    border-top: 3px solid transparent;
-    transition: border-color 0.2s;
-  }
-  .s-card:hover { border-color: var(--amber); }
-
-  .s-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
-    color: rgba(201,168,76,0.2);
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .s-card strong {
-    display: block;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--offwhite);
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-
-  .s-card p {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.65;
-  }
-
-  /* Sectors served */
-  .sectors {
-    margin-top: 48px;
-    padding: 24px;
-    border: 1px solid var(--border);
-    background: rgba(201,168,76,0.03);
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-  .sectors-label {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--amber);
-    flex-shrink: 0;
-  }
-  .sectors-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .sector-tag {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 5px 12px;
-    letter-spacing: 0.06em;
-  }
-
-  /* AMBER BAND */
-  .amber-band {
-    background: var(--amber);
-    padding: 48px 60px;
-    position: relative;
-    z-index: 1;
-  }
-  .amber-band-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-  }
-  .amber-band p {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--steel);
-    line-height: 1.4;
-    max-width: 600px;
-  }
-  .amber-band p span {
-    display: block;
-    font-size: 15px;
-    font-weight: 400;
-    margin-top: 8px;
-    opacity: 0.75;
-  }
-  .amber-band a {
-    background: var(--steel);
-    color: var(--amber);
-    padding: 14px 32px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: opacity 0.2s;
-  }
-  .amber-band a:hover { opacity: 0.85; }
-
-  /* HOW IT WORKS */
-  #process { background: var(--steel); border-bottom: 1px solid var(--border); }
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-  }
-
-  .step { background: var(--deep); padding: 32px 28px; }
-
-  .step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px;
-    color: rgba(201,168,76,0.15);
-    line-height: 1;
-    margin-bottom: 20px;
-  }
-
-  .step strong {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--offwhite);
-    margin-bottom: 10px;
-    letter-spacing: 0.02em;
-  }
-
-  .step p {
-    font-size: 13px;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.65;
-  }
-
-  /* CONTACT */
-  #contact { background: var(--deep); }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .contact-text p {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 40px;
-    font-style: italic;
-  }
-
-  .contact-details { display: flex; flex-direction: column; gap: 16px; }
-
-  .contact-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    border: 1px solid var(--border);
-    text-decoration: none;
-    transition: border-color 0.2s;
-    background: var(--steel);
-  }
-  .contact-row:hover { border-color: var(--amber); }
-
-  .contact-icon { font-size: 14px; color: var(--amber); width: 20px; text-align: center; flex-shrink: 0; }
-
-  .contact-row-text strong {
-    display: block;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber);
-    margin-bottom: 2px;
-  }
-  .contact-row-text span { font-size: 14px; color: var(--offwhite); font-weight: 300; }
-
-  .contact-cta {
-    margin-top: 40px;
-    padding: 28px 24px;
-    background: rgba(201,168,76,0.06);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--amber);
-  }
-  .contact-cta p {
-    font-size: 15px;
-    font-style: italic;
-    color: var(--offwhite);
-    line-height: 1.6;
-    margin-bottom: 0;
-  }
-
-  /* FOOTER */
-  footer {
-    background: #0a1018;
-    border-top: 3px solid var(--amber);
-    padding: 28px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-name {
+ 
+  .framework-row-word {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
-    color: var(--offwhite);
-    letter-spacing: 0.04em;
-  }
-  .footer-role {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
     color: var(--amber);
-    margin-top: 3px;
+    letter-spacing: 0.06em;
+    line-height: 1;
   }
-
-  .footer-right {
+ 
+  .framework-row-desc {
     font-size: 12px;
-    color: var(--muted);
     font-weight: 300;
-    text-align: right;
+    color: var(--muted);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
   }
-  .footer-right a { color: var(--muted); text-decoration: none; }
-  .footer-right a:hover { color: var(--amber); }
-
-  /* RESPONSIVE */
+ 
   @media (max-width: 900px) {
-    nav { padding: 0 28px; }
-    .nav-links { display: none; }
-    .hero { padding: 100px 28px 60px; }
-    .section-inner { padding: 72px 28px; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    .amber-band { padding: 36px 28px; }
-    .amber-band-inner { flex-direction: column; align-items: flex-start; }
-    .sectors { flex-direction: column; align-items: flex-start; gap: 16px; }
-    footer { padding: 24px 28px; flex-direction: column; align-items: flex-start; gap: 12px; }
-    .footer-right { text-align: left; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-right { display: none; }
   }
-</style>
+    @media (max-width: 900px) {
+      nav { padding: 0 28px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 100px 28px 60px; }
+      .section-inner { padding: 72px 28px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .packages-grid { grid-template-columns: 1fr; }
+      .pkg-card { grid-template-columns: 1fr; gap: 16px; }
+      .pkg-tag { white-space: normal; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .amber-band { padding: 36px 28px; }
+      .amber-band-inner { flex-direction: column; align-items: flex-start; }
+      footer { padding: 24px 28px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .footer-right { text-align: left; }
+    }
+  </style>
 </head>
 <body>
-
-<nav>
-  <a href="#" class="nav-logo">Colleen <span>Murphy</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#mot">Free MOT</a></li>
-    <li><a href="#process">How It Works</a></li>
-    <li><a href="tools.html" style="color:var(--amber);">Free Tools ↗</a></li>
-    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
-  </ul>
-</nav>
-
-<section class="hero" id="home">
-  <div class="hero-eyebrow">For Busy Business Owners · Northern Ireland</div>
-  <h1 class="hero-headline">Better systems.<br>Not more <em>staff.</em></h1>
-  <div class="hero-tagline">Practical, hands-on support for growing businesses, without the cost of a full-time hire.</div>
-  <div class="hero-trust">Specialist experience in <span>construction & trades</span> · SMEs · Operations</div>
-  <div class="hero-strip">Organise &nbsp;|&nbsp; Simplify &nbsp;|&nbsp; Improve &nbsp;|&nbsp; Track &nbsp;|&nbsp; Solve</div>
-  <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Get in Touch</a>
-    <a href="#services" class="btn-secondary">See Services</a>
+ 
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <svg width="22" height="20" viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="30" width="48" height="12" rx="1.5" fill="#c9a84c" opacity="1"/>
+        <rect x="0" y="16" width="32" height="12" rx="1.5" fill="#c9a84c" opacity="0.65"/>
+        <rect x="0" y="2"  width="16" height="12" rx="1.5" fill="#c9a84c" opacity="0.35"/>
+      </svg>
+      <svg width="180" height="22" viewBox="0 0 180 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text y="17" font-family="'Bebas Neue', sans-serif" font-size="22" letter-spacing="0">
+          <tspan fill="#f0ebe3">AUTOMATE</tspan><tspan fill="#c9a84c">-</tspan><tspan fill="#f0ebe3">ELEVATE</tspan>
+        </text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#contact" class="nav-cta">Book a Free Call</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#packages" onclick="closeMobile()">Packages</a>
+    <a href="#process" onclick="closeMobile()">How It Works</a>
+    <a href="#contact" class="mobile-cta" onclick="closeMobile()">Book a Free Call</a>
   </div>
-</section>
-
-<section id="about">
-  <div class="section-inner">
-    <div class="section-label">About</div>
-    <h2 class="section-title">Hands-on.<br>Practical.<br>Results-focused.</h2>
-    <div class="section-divider"></div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm Colleen Murphy, a Project Manager and business support specialist based in Omagh, Northern Ireland, with over <strong>10 years of experience</strong> delivering projects across construction, commercial and governance environments.</p>
-        <p>I work directly with business owners and directors to bring structure, clarity and control to the operational and financial side of their business. Getting costs under control, building reporting systems, cutting through the day-to-day chaos. I work practically and efficiently to make a real difference.</p>
-        <p>As co-director of <strong>View2Build</strong>, I manage invoicing, budgeting and cost reporting on live construction projects every day. That's not background knowledge. It's what I do.</p>
-        <p>Services are flexible and tailored to what you actually need. No long-term contracts, no jargon. Just hands-on support that works.</p>
-        <div class="construction-credential">
-          <div class="cc-label">Construction & Trades Specialist</div>
-          <p>From cost reporting and variations to subcontractor payments and programme tracking, I bring financial and operational structure to construction businesses that need it most.</p>
-        </div>
-        <div class="quals" style="margin-top: 24px;">
-          <div class="quals-label">Qualifications</div>
-          <div class="quals-list">
-            <span class="qual-tag">PRINCE2</span>
-            <span class="qual-tag">MSc Management & Corporate Governance</span>
-            <span class="qual-tag">Lean Six Sigma Green Belt</span>
-            <span class="qual-tag">QuickBooks</span>
-          </div>
+ 
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Northern Ireland &nbsp;·&nbsp; Construction and Trades &nbsp;·&nbsp; SMEs</div>
+        <h1 class="hero-headline">You do what you love.<br>We <em>automate</em> the rest.</h1>
+        <div class="hero-subline">We streamline your operations so you can focus on growth.</div>
+        <div class="hero-microline">From enquiries and scheduling to invoicing and team systems, all handled in one place.</div>
+        <div class="hero-actions">
+          <a href="https://calendly.com/colleenpmni/30min" target="_blank" class="btn-primary">Book a Free Discovery Call</a>
         </div>
       </div>
-      <div class="about-stats">
-        <div class="stat-row">
-          <div class="stat-num">10+</div>
-          <div class="stat-text">
-            <strong>Years Experience</strong>
-            <span>Delivering projects across construction, commercial and governance environments</span>
+      <div class="hero-right">
+        <div class="framework-row">
+          <div class="framework-row-word">Define.</div>
+          <div class="framework-row-desc">We identify exactly what is slowing your business down and costing you time and money.</div>
+        </div>
+        <div class="framework-row">
+          <div class="framework-row-word">Automate.</div>
+          <div class="framework-row-desc">We build the right systems and processes to fix it, properly and permanently.</div>
+        </div>
+        <div class="framework-row">
+          <div class="framework-row-word">Elevate.</div>
+          <div class="framework-row-desc">Your business runs better. You lead it instead of firefighting it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- DOES THIS SOUND LIKE YOU -->
+  <section id="pain">
+    <div class="section-inner">
+      <div class="framework-marker">Define</div>
+      <div class="section-label">The Reality for Most Business Owners</div>
+      <h2 class="section-title">Are you trapped in the <em>day-to-day?</em></h2>
+      <div class="section-divider"></div>
+      <p class="pain-intro">You are not alone. The good news is there is a clear path forward, and it does not have to be complicated.</p>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">▸</div>
+          <p>Invoices go out late, impacting cash flow</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">▸</div>
+          <p>Your business can't run smoothly without you</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">▸</div>
+          <p>Valuable leads slip away due to manual follow-up</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">▸</div>
+          <p>Critical information is scattered, slowing your team down</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">▸</div>
+          <p>You don't know which services or jobs are actually profitable</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">▸</div>
+          <p>Every new hire requires the same repetitive training from scratch</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="framework-marker">Automate</div>
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title">Three ways I can help you <em>right now.</em></h2>
+      <div class="section-divider"></div>
+      <div class="services-intro">The three areas where business owners most commonly lose time, money and energy. Sound familiar? There is a straightforward fix for each one.</div>
+      <div class="services-grid">
+        <div class="s-card">
+          <div class="s-num">01</div>
+          <strong>Enquiries and Scheduling</strong>
+          <p>Never lose a lead or miss a booking again. Simple workflows that keep things moving without the manual chasing.</p>
+        </div>
+        <div class="s-card">
+          <div class="s-num">02</div>
+          <strong>Invoicing and Cash Flow</strong>
+          <p>Stop chasing payments and start getting paid on time. Clear cost tracking and reporting built around how your business actually works.</p>
+        </div>
+        <div class="s-card">
+          <div class="s-num">03</div>
+          <strong>Team Systems and Processes</strong>
+          <p>Documented processes so your business runs without you having to be everywhere. Your knowledge written down and working for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- AMBER BAND -->
+  <div class="amber-band">
+    <div class="amber-band-inner">
+      <p>Stop firefighting. Start leading.<span>Practical, hands-on support that frees up your time, reduces stress, and improves your bottom line.</span></p>
+      <a href="https://calendly.com/colleenpmni/30min" target="_blank">Book a Free Discovery Call <span style="font-size:16px; letter-spacing:0;">→</span></a>
+    </div>
+  </div>
+ 
+  <!-- PACKAGES -->
+  <section id="packages">
+    <div class="section-inner">
+      <div class="framework-marker">Elevate</div>
+      <div class="section-label">Tailored Solutions</div>
+      <h2 class="section-title">Simple pricing. <em>Real results.</em></h2>
+      <div class="section-divider"></div>
+      <p class="packages-intro">Clear, straightforward pricing with no long-term contracts. Start where it makes sense and build from there.</p>
+      <div class="packages-grid">
+        <div class="pkg-card">
+          <div class="pkg-card-left">
+            <strong>Systems Audit</strong>
+            <div class="pkg-price">From £150</div>
+          </div>
+          <p>We review how your business currently runs, find what is slowing you down and costing you money, and give you a clear written action plan you can start using straight away.</p>
+          <div class="pkg-tag">Perfect for gaining clarity before committing to change.</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-card-left">
+            <strong>Systems Implementation</strong>
+            <div class="pkg-price">From £550</div>
+          </div>
+          <p>We do not just find the problems, we fix them. I design and build the right processes for your business, from enquiry handling and scheduling to invoicing workflows. Done properly, not just patched.</p>
+          <div class="pkg-tag">Ideal for businesses ready to make real, lasting changes.</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-card-left">
+            <strong>Team Training &amp; SOPs</strong>
+            <div class="pkg-price">From £150</div>
+          </div>
+          <p>I work hands-on with your team, training them on new systems and writing everything up into clear Standard Operating Procedures. Your business stops relying on you to explain things from scratch every time.</p>
+          <div class="pkg-tag">Essential for businesses ready to delegate properly.</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-card-left">
+            <strong>Ongoing Support</strong>
+            <div class="pkg-price">From £99/month</div>
+          </div>
+          <p>Regular check-ins, process reviews and continuous improvement as your business grows. Think of it as having an operations partner in your corner every month, without the cost of a full-time hire.</p>
+          <div class="pkg-tag">Perfect for businesses that want ongoing support without the overhead.</div>
+        </div>
+      </div>
+      <div class="pkg-bespoke">
+        <p>Not sure which is right for you? Every business is different. Get in touch and we will work out what makes the most sense for yours.</p>
+        <a href="https://calendly.com/colleenpmni/30min" target="_blank" class="btn-primary">Book Your Free Strategy Call</a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">About</div>
+      <h2 class="section-title">The person<br>behind the process.</h2>
+      <p class="about-tagline">Hands-on. Practical. Results-focused.</p>
+      <div class="section-divider"></div>
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="about-profile">
+            <div class="about-photo-wrap">
+              <img src="data:image/jpeg;base64,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" alt="Colleen Murphy" class="about-photo">
+            </div>
+            <div class="about-name-block">
+              <div class="about-name">Colleen Murphy</div>
+              <div class="about-title-tag">Founder, Automate &amp; Elevate</div>
+              <div class="about-location">📍 Omagh, Northern Ireland</div>
+            </div>
+          </div>
+          <p>I know what it is like to be inside a growing business with more tasks than hours. Over <strong>10 years</strong> I have worked across construction, commercial and governance environments, doing this work rather than just advising on it.</p>
+          <p>I work directly with business owners to bring structure, clarity and control to the operational and financial side of their business. Getting costs under control, building reporting systems, cutting through the day-to-day chaos. I work practically and efficiently to make a real difference.</p>
+          <p>As co-director of <strong>View2Build</strong>, I manage invoicing, budgeting and cost reporting on live construction projects every day. That is not background knowledge. It is what I do.</p>
+          <p>I have a genuine interest in where AI and automation tools are heading and I apply that practically. Where the right tool can save a client hours every week, I will find it, set it up, and make sure it actually gets used. You do not need to understand the technology. You just need the results.</p>
+          <p>Services are flexible and tailored to what you actually need. No jargon. Just hands-on support that works.</p>
+          <div class="quals">
+            <div class="quals-label">Qualifications</div>
+            <div class="quals-list">
+              <span class="qual-tag">PRINCE2</span>
+              <span class="qual-tag">MSc Management &amp; Corporate Governance</span>
+              <span class="qual-tag">Lean Six Sigma Green Belt</span>
+            </div>
           </div>
         </div>
-        <div class="stat-row">
-          <div class="stat-num">2</div>
-          <div class="stat-text">
-            <strong>Specialist Areas</strong>
-            <span>Construction business support and SME systems & organisation</span>
+        <div class="about-stats">
+          <div class="stat-row">
+            <div class="stat-num">10+</div>
+            <div class="stat-text">
+              <strong>Years Experience</strong>
+              <span>Delivering projects across construction, commercial and governance environments</span>
+            </div>
           </div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-num">4</div>
-          <div class="stat-text">
-            <strong>Qualifications</strong>
-            <span>PRINCE2, MSc, Lean Six Sigma Green Belt, QuickBooks. Applied practically, not just on paper.</span>
+          <div class="stat-row">
+            <div class="stat-num">2</div>
+            <div class="stat-text">
+              <strong>Specialist Areas</strong>
+              <span>Construction business support and SME systems &amp; organisation</span>
+            </div>
           </div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-num">NI</div>
-          <div class="stat-text">
-            <strong>Based in Omagh</strong>
-            <span>Serving businesses across Northern Ireland and Donegal. Remote work also available.</span>
+          <div class="stat-row">
+            <div class="stat-num">3</div>
+            <div class="stat-text">
+              <strong>Qualifications</strong>
+              <span>PRINCE2, MSc Management and Corporate Governance, Lean Six Sigma Green Belt. Applied practically, not just on paper.</span>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-num">NI</div>
+            <div class="stat-text">
+              <strong>Based in Omagh</strong>
+              <span>Serving businesses across Northern Ireland and Donegal. Remote work also available.</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="services">
-  <div class="section-inner">
-    <div class="section-label">Services</div>
-    <h2 class="section-title">Too busy running<br>your business<br>to organise it?</h2>
-    <div class="section-divider"></div>
-    <div class="services-intro">Most growing businesses don't need more staff. They need better systems. I work with business owners to put simple, practical processes in place so the day-to-day runs more smoothly.</div>
-    <div class="services-grid">
-      <div class="s-card">
-        <div class="s-num">01</div>
-        <strong>Get Your Business Organised</strong>
-        <p>Simple systems and processes that remove the chaos and save you time, so the day-to-day actually runs smoothly.</p>
-      </div>
-      <div class="s-card">
-        <div class="s-num">02</div>
-        <strong>Know Where Your Money Is Going</strong>
-        <p>Clear cost tracking and reporting built around your business. No more end-of-month scrambles or guesswork.</p>
-      </div>
-      <div class="s-card">
-        <div class="s-num">03</div>
-        <strong>See What's Working and What Isn't</strong>
-        <p>Clear visibility over your business so you and your team always know exactly where things stand and what needs attention.</p>
-      </div>
-    </div>
-    <div class="sectors">
-      <div class="sectors-label">Sectors Served</div>
-      <div class="sectors-list">
-        <span class="sector-tag">Construction & Trades</span>
-        <span class="sector-tag">Engineering</span>
-        <span class="sector-tag">Retail & Hospitality</span>
-        <span class="sector-tag">Professional Services</span>
-        <span class="sector-tag">Property & Facilities</span>
-        <span class="sector-tag">SMEs across NI</span>
-      </div>
-    </div>
-
-    <div style="margin-top:20px; background:var(--steel); border:1px solid var(--border); border-top:3px solid var(--amber); padding:28px 32px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;">
-      <div>
-        <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--amber); margin-bottom:8px;">Free Tools</div>
-        <div style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--off); line-height:1; margin-bottom:6px;">Check Your Business Health. Estimate Your Job Margin.</div>
-        <div style="font-size:13px; color:var(--muted); font-weight:300; font-style:italic;">Two free tools built specifically for construction and trades businesses. No signup required.</div>
-      </div>
-      <a href="tools.html" style="background:var(--amber); color:var(--steel); padding:13px 28px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0;">Try the Free Tools →</a>
-    </div>
-  </div>
-</section>
-
-<div class="amber-band">
-  <div class="amber-band-inner">
-    <p>Most businesses don't need more staff. They just need better systems.<span>Practical, hands-on support without the cost of a full-time hire.</span></p>
-    <a href="#contact">Get in Touch</a>
-  </div>
-</div>
-
-<section id="mot" style="background:var(--deep); border-bottom:1px solid var(--border);">
-  <div class="section-inner">
-    <div class="section-label">Free Offer</div>
-    <h2 class="section-title">Free Business<br>MOT.</h2>
-    <div class="section-divider"></div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
-      <div>
-        <p style="font-size:17px; font-weight:300; color:var(--muted); line-height:1.75; font-style:italic; padding-left:20px; border-left:3px solid var(--amber); margin-bottom:32px;">A two-hour review of how your business runs. A written summary of what to fix. No pitch, no obligation.</p>
-        <p style="font-size:15px; font-weight:300; color:var(--muted); line-height:1.8; margin-bottom:16px;">Most business owners have a sense that things could run better but never have the time to stop and look at it properly. The Business MOT gives you that outside perspective, focused entirely on what is actually happening in your business and where the gaps are.</p>
-        <p style="font-size:15px; font-weight:300; color:var(--muted); line-height:1.8; margin-bottom:32px;">Within 48 hours of our conversation you will receive a written summary covering what is working, what is not, and three specific recommendations you can act on immediately.</p>
-        <div style="padding:20px 24px; background:rgba(201,168,76,0.06); border:1px solid var(--border); border-left:3px solid var(--amber);">
-          <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--amber); margin-bottom:10px;">Limited Availability</div>
-          <p style="font-size:14px; color:var(--offwhite); line-height:1.6;">I offer a small number of free Business MOTs each month. If you have been wondering whether your business systems are costing you time or money, this is the place to start.</p>
+  </section>
+ 
+  <!-- HOW IT WORKS -->
+  <section id="process">
+    <div class="section-inner">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Simple.<br>Straightforward.<br>No obligation.</h2>
+      <div class="section-divider"></div>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <strong>Book Your Free 20-Minute Call</strong>
+          <p>No preparation needed. Just tell me what is not working in your business right now and we will go from there. No pressure, no jargon.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <strong>A Plan That Fits Your Business</strong>
+          <p>If it is a good fit, we put together a clear, flexible plan of support matched to your actual needs and budget. No cookie-cutter solutions.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <strong>Hands-on Support That Actually Works</strong>
+          <p>Practical, hands-on help that makes a real difference to how your business runs day to day. We put the right systems in place and make sure they stick.</p>
         </div>
       </div>
-      <div>
-        <div style="display:flex; flex-direction:column; gap:2px; margin-bottom:28px;">
-          <div style="background:var(--steel); padding:20px 24px; border-top:3px solid var(--amber);">
-            <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--amber); margin-bottom:6px;">01  Two-Hour Review</div>
-            <p style="font-size:13px; color:var(--muted); font-weight:300; line-height:1.6;">On-site or video call. We go through how the business runs. Costs, systems, reporting, processes.. No agenda, just honest questions.</p>
-          </div>
-          <div style="background:var(--steel); padding:20px 24px;">
-            <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--amber); margin-bottom:6px;">02  Written Summary</div>
-            <p style="font-size:13px; color:var(--muted); font-weight:300; line-height:1.6;">Within 48 hours. What is working, what is not, and three specific recommendations. Yours to keep and act on regardless of what happens next.</p>
-          </div>
-          <div style="background:var(--steel); padding:20px 24px;">
-            <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--amber); margin-bottom:6px;">03  No Obligation</div>
-            <p style="font-size:13px; color:var(--muted); font-weight:300; line-height:1.6;">No pitch at the end. No pressure to sign up for anything. If it makes sense to work together after that, we can talk about it. If not, the summary is still useful.</p>
-          </div>
-        </div>
-        <a href="#contact" style="display:block; text-align:center; background:var(--amber); color:var(--steel); padding:15px 32px; font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; text-decoration:none;">Book Your Free Business MOT</a>
+      <div class="process-cta">
+        <a href="https://calendly.com/colleenpmni/30min" target="_blank" class="btn-primary">Book Your Free 20-Minute Call</a>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="process">
-  <div class="section-inner">
-    <div class="section-label">How It Works</div>
-    <h2 class="section-title">Simple, no-obligation<br>process.</h2>
-    <div class="section-divider"></div>
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <strong>Get in Touch</strong>
-        <p>A quick call or email to tell me a bit about your business and what you're struggling with.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <strong>Free Chat</strong>
-        <p>No obligation conversation to work out whether and how I can help. No pressure, no jargon.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <strong>Tailored Plan</strong>
-        <p>If it's a good fit, we agree on a flexible plan of support that matches your actual needs and budget.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <strong>Get Organised</strong>
-        <p>Practical, hands-on support that makes a real difference to how your business operates day-to-day.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-label">Get in Touch</div>
-    <h2 class="section-title">Let's have<br>a chat.</h2>
-    <div class="section-divider"></div>
-    <div class="contact-grid">
-      <div class="contact-text">
-        <p>Whether you have a specific problem in mind or just a nagging sense that things could be better organised. I'm happy to talk it through. No commitment required.</p>
-        <div class="contact-cta">
-          <p>Not sure where to start? Give me a call for a quick chat. Even if it's just about how you currently run things.</p>
+  </section>
+ 
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <div class="section-label">What Clients Say</div>
+      <h2 class="section-title">Built on real<br>results.</h2>
+      <div class="section-divider"></div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">"Colleen sorted our invoicing system in a week. We have not had a late payment since and I have stopped spending every Sunday evening on admin."</div>
+          <div class="testimonial-author">
+            <strong>Business Owner, Construction &amp; Trades</strong>
+            <span>Northern Ireland</span>
+          </div>
+          <div class="testimonial-placeholder">Replace with real client quote before going live</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">"I did not realise how much time we were losing to manual processes until Colleen mapped it out. Within a month we had systems in place that the whole team could follow."</div>
+          <div class="testimonial-author">
+            <strong>Director, SME Services Business</strong>
+            <span>Northern Ireland</span>
+          </div>
+          <div class="testimonial-placeholder">Replace with real client quote before going live</div>
         </div>
       </div>
-      <div class="contact-details">
-        <a href="mailto:colleenpmni@gmail.com" class="contact-row">
-          <div class="contact-icon">✉</div>
-          <div class="contact-row-text">
-            <strong>Email</strong>
-            <span>colleenpmni@gmail.com</span>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">Book a Free Discovery Call</div>
+      <h2 class="section-title">You do not need to figure this out <em>alone.</em></h2>
+      <div class="section-divider"></div>
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p>A 20-minute call, no obligation, no jargon. Just an honest conversation about what would help most.</p>
+          <div class="contact-cta">
+            <p>Not sure where to start? Give me a call. Even if it is just to talk through how things currently run, that is absolutely fine.</p>
           </div>
-        </a>
-        <a href="tel:07732867230" class="contact-row">
-          <div class="contact-icon">☎</div>
-          <div class="contact-row-text">
-            <strong>Phone</strong>
-            <span>07732 867230</span>
+          <div style="margin-top:28px; display:flex; flex-direction:column; gap:12px;">
+            <a href="tel:07732867230" class="contact-row">
+              <div class="contact-icon">☎</div>
+              <div class="contact-row-text">
+                <strong>Phone</strong>
+                <span>07732 867230</span>
+              </div>
+            </a>
+            <a href="mailto:colleenpmni@gmail.com" class="contact-row">
+              <div class="contact-icon">✉</div>
+              <div class="contact-row-text">
+                <strong>Email</strong>
+                <span>colleenpmni@gmail.com</span>
+              </div>
+            </a>
+            <div class="contact-row" style="cursor:default;">
+              <div class="contact-icon">📍</div>
+              <div class="contact-row-text">
+                <strong>Location</strong>
+                <span>Omagh, Northern Ireland, Remote available</span>
+              </div>
+            </div>
           </div>
-        </a>
-        <a href="https://www.colleenmurphypm.com" class="contact-row">
-          <div class="contact-icon">◎</div>
-          <div class="contact-row-text">
-            <strong>Website</strong>
-            <span>www.colleenmurphypm.com</span>
-          </div>
-        </a>
-        <div class="contact-row" style="cursor:default;">
-          <div class="contact-icon">📍</div>
-          <div class="contact-row-text">
-            <strong>Location</strong>
-            <span>Omagh, Northern Ireland · Remote available</span>
+          <div style="margin-top:24px;">
+            <a href="https://calendly.com/colleenpmni/30min" target="_blank" class="btn-primary" style="display:inline-block;">Book a Call via Calendly</a>
           </div>
         </div>
-        <a href="mailto:colleenpmni@gmail.com" class="btn-primary" style="margin-top:16px; display:inline-block; text-align:center;">Send me an Email</a>
+        <div>
+          <div id="formSuccess" class="form-success">
+            <strong style="display:block; margin-bottom:8px; font-style:normal; color:var(--amber);">Message sent. Thank you!</strong>
+            I will be in touch within one business day. If you would prefer to speak sooner, call me on 07732 867230.
+          </div>
+          <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="e.g. John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. 07700 900000">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="e.g. john@yourbusiness.com" required>
+            </div>
+            <div class="form-group">
+              <label for="service">What are you interested in?</label>
+              <select id="service" name="service">
+                <option value="">Select an option</option>
+                <option>Systems Audit (from £150)</option>
+                <option>Systems Implementation (from £550)</option>
+                <option>Team Training &amp; SOPs (from £150)</option>
+                <option>Ongoing Support (from £99/month)</option>
+                <option>Not sure yet, just want a chat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="challenge">What's your biggest challenge right now?</label>
+              <textarea id="challenge" name="challenge" placeholder="Tell me a bit about what is not working. Even a couple of sentences helps."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<footer>
-  <div>
-    <div class="footer-name">Colleen Murphy</div>
-    <div class="footer-role">Project Manager · Business Systems & Process Improvement</div>
-  </div>
-  <div class="footer-right">
-    <a href="mailto:colleenpmni@gmail.com">colleenpmni@gmail.com</a>
-    <span style="margin-top:4px; display:block;">📍 Omagh, Northern Ireland</span>
-    <span style="margin-top:4px; display:block;">© 2026 Colleen Murphy</span>
-  </div>
-</footer>
-
+  </section>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-name">Automate &amp; Elevate</div>
+      <div class="footer-role">Business Automation and Operations, Northern Ireland</div>
+      <div style="margin-top:6px; font-size:12px; color:var(--muted); font-weight:300;">Colleen Murphy, colleenpmni@gmail.com</div>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:colleenpmni@gmail.com">colleenpmni@gmail.com</a>
+      <span style="margin-top:4px; display:block;">Omagh, Northern Ireland</span>
+      <span style="margin-top:4px; display:block;">© 2026 Automate &amp; Elevate</span>
+      <a href="tools.html" class="footer-tools-link">Free Tools ↗</a>
+    </div>
+  </footer>
+ 
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+ 
+    // Contact form — submits to Formspree, shows success message
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const data = new FormData(form);
+        const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or email colleenpmni@gmail.com directly.');
+        }
+      } catch {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email colleenpmni@gmail.com directly.');
+      }
+    }
+  </script>
 </body>
 </html>
+ 

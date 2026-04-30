@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
     :root {
       --steel:    #16202e;
       --deep:     #0e1720;
@@ -23,16 +23,16 @@
       --muted:    #7a8fa8;
       --border:   rgba(201,168,76,0.2);
     }
- 
+
     html { scroll-behavior: smooth; }
- 
+
     body {
       background: var(--deep);
       font-family: 'DM Sans', sans-serif;
       color: var(--offwhite);
       overflow-x: hidden;
     }
- 
+
     body::before {
       content: '';
       position: fixed;
@@ -46,7 +46,7 @@
       pointer-events: none;
       z-index: 0;
     }
- 
+
     /* ── NAV ── */
     nav {
       position: fixed;
@@ -61,7 +61,7 @@
       align-items: center;
       height: 64px;
     }
- 
+
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
@@ -72,17 +72,17 @@
       align-items: center;
       gap: 10px;
     }
- 
+
     .nav-logo svg { flex-shrink: 0; }
     .nav-logo .logo-text { color: var(--offwhite); }
     .nav-logo .logo-dash { color: var(--amber); }
- 
+
     .nav-links {
       display: flex;
       gap: 36px;
       list-style: none;
     }
- 
+
     .nav-links a {
       font-size: 11px;
       font-weight: 600;
@@ -92,9 +92,9 @@
       text-decoration: none;
       transition: color 0.2s;
     }
- 
+
     .nav-links a:hover { color: var(--amber); }
- 
+
     .nav-cta {
       background: var(--amber);
       color: var(--steel) !important;
@@ -106,9 +106,9 @@
       text-decoration: none;
       transition: opacity 0.2s;
     }
- 
+
     .nav-cta:hover { opacity: 0.85; }
- 
+
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
@@ -120,7 +120,7 @@
       z-index: 1;
       border-bottom: 1px solid var(--border);
     }
- 
+
     .hero-eyebrow {
       font-size: 10px;
       font-weight: 600;
@@ -131,7 +131,7 @@
       opacity: 0;
       animation: fadeUp 0.6s ease 0.2s forwards;
     }
- 
+
     .hero-headline {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(72px, 10vw, 130px);
@@ -142,9 +142,9 @@
       opacity: 0;
       animation: fadeUp 0.7s ease 0.35s forwards;
     }
- 
+
     .hero-headline em { color: var(--amber); font-style: normal; }
- 
+
     .hero-subline {
       font-size: clamp(18px, 2vw, 22px);
       font-weight: 400;
@@ -155,7 +155,7 @@
       animation: fadeUp 0.7s ease 0.5s forwards;
       line-height: 1.5;
     }
- 
+
     .hero-microline {
       font-size: clamp(13px, 1.4vw, 15px);
       font-weight: 300;
@@ -167,7 +167,7 @@
       line-height: 1.5;
       font-style: italic;
     }
- 
+
     .hero-actions {
       display: flex;
       gap: 16px;
@@ -175,7 +175,7 @@
       opacity: 0;
       animation: fadeUp 0.6s ease 0.8s forwards;
     }
- 
+
     .btn-primary {
       background: var(--amber);
       color: var(--steel);
@@ -187,23 +187,23 @@
       text-decoration: none;
       transition: opacity 0.2s;
     }
- 
+
     .btn-primary:hover { opacity: 0.85; }
- 
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
- 
+
     /* ── SECTIONS ── */
     section { position: relative; z-index: 1; }
- 
+
     .section-inner {
       max-width: 1100px;
       margin: 0 auto;
       padding: 100px 60px;
     }
- 
+
     .section-label {
       font-size: 10px;
       font-weight: 600;
@@ -212,7 +212,7 @@
       color: var(--amber);
       margin-bottom: 16px;
     }
- 
+
     .section-title { 
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(48px, 6vw, 72px);
@@ -221,18 +221,18 @@
       letter-spacing: 0.01em;
       margin-bottom: 48px;
     }
- 
+
     .section-title em {
       color: var(--amber);
       font-style: normal;
     }
- 
+
     .section-divider {
       height: 1px;
       background: var(--border);
       margin-bottom: 48px;
     }
- 
+
     .framework-marker {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 11px;
@@ -242,13 +242,13 @@
       opacity: 0.5;
       margin-bottom: 6px;
     }
- 
+
     /* ── PAIN POINTS ── */
     #pain {
       background: var(--steel);
       border-bottom: 1px solid var(--border);
     }
- 
+
     .pain-intro {
       font-size: 17px;
       font-weight: 300;
@@ -260,13 +260,13 @@
       padding-left: 20px;
       border-left: 3px solid var(--amber);
     }
- 
+
     .pain-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2px;
     }
- 
+
     .pain-card {
       background: var(--deep);
       padding: 24px 28px;
@@ -276,23 +276,23 @@
       border-left: 3px solid transparent;
       transition: border-color 0.2s;
     }
- 
+
     .pain-card:hover { border-color: var(--amber); }
- 
+
     .pain-icon {
       font-size: 18px;
       color: var(--amber);
       flex-shrink: 0;
       margin-top: 2px;
     }
- 
+
     .pain-card p {
       font-size: 15px;
       font-weight: 400;
       color: var(--offwhite);
       line-height: 1.4;
     }
- 
+
     .about-tagline {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
@@ -301,7 +301,7 @@
       margin-bottom: 32px;
       opacity: 0.85;
     }
- 
+
     /* ── ABOUT PHOTO ── */
     .about-profile {
       display: flex;
@@ -311,11 +311,11 @@
       padding-bottom: 32px;
       border-bottom: 1px solid var(--border);
     }
- 
+
     .about-photo-wrap {
       flex-shrink: 0;
     }
- 
+
     .about-photo {
       width: 100px;
       height: 100px;
@@ -325,7 +325,7 @@
       border: 3px solid var(--amber);
       display: block;
     }
- 
+
     .about-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 36px;
@@ -334,7 +334,7 @@
       line-height: 1;
       margin-bottom: 6px;
     }
- 
+
     .about-title-tag {
       font-size: 11px;
       font-weight: 600;
@@ -343,26 +343,26 @@
       color: var(--amber);
       margin-bottom: 4px;
     }
- 
+
     .about-location {
       font-size: 12px;
       color: var(--muted);
       font-weight: 300;
     }
- 
+
     /* ── ABOUT ── */
     #about {
       background: var(--deep);
       border-bottom: 1px solid var(--border);
     }
- 
+
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
     }
- 
+
     .about-text p {
       font-size: 16px;
       font-weight: 300;
@@ -370,19 +370,19 @@
       line-height: 1.8;
       margin-bottom: 20px;
     }
- 
+
     .about-text p strong {
       color: var(--offwhite);
       font-weight: 500;
     }
- 
+
     .quals {
       margin-top: 24px;
       padding: 20px 24px;
       border: 1px solid var(--border);
       background: rgba(201,168,76,0.03);
     }
- 
+
     .quals-label {
       font-size: 9px;
       font-weight: 600;
@@ -391,13 +391,13 @@
       color: var(--amber);
       margin-bottom: 12px;
     }
- 
+
     .quals-list {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
- 
+
     .qual-tag {
       font-size: 11px;
       font-weight: 500;
@@ -406,13 +406,13 @@
       padding: 5px 12px;
       letter-spacing: 0.06em;
     }
- 
+
     .about-stats {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
- 
+
     .stat-row {
       display: flex;
       align-items: flex-start;
@@ -420,9 +420,9 @@
       padding: 20px 0;
       border-bottom: 1px solid var(--border);
     }
- 
+
     .stat-row:first-child { border-top: 1px solid var(--border); }
- 
+
     .stat-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 52px;
@@ -431,7 +431,7 @@
       flex-shrink: 0;
       width: 80px;
     }
- 
+
     .stat-text strong {
       display: block;
       font-size: 13px;
@@ -441,20 +441,20 @@
       margin-bottom: 4px;
       margin-top: 6px;
     }
- 
+
     .stat-text span {
       font-size: 12px;
       color: var(--muted);
       font-weight: 300;
       line-height: 1.5;
     }
- 
+
     /* ── SERVICES ── */
     #services {
       background: var(--steel);
       border-bottom: 1px solid var(--border);
     }
- 
+
     .services-intro {
       font-size: 17px;
       font-weight: 300;
@@ -466,23 +466,23 @@
       padding-left: 20px;
       border-left: 3px solid var(--amber);
     }
- 
+
     .services-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2px;
       margin-bottom: 48px;
     }
- 
+
     .s-card {
       background: var(--deep);
       padding: 32px 28px;
       border-top: 3px solid transparent;
       transition: border-color 0.2s;
     }
- 
+
     .s-card:hover { border-color: var(--amber); }
- 
+
     .s-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 36px;
@@ -490,7 +490,7 @@
       line-height: 1;
       margin-bottom: 16px;
     }
- 
+
     .s-card strong {
       display: block;
       font-size: 15px;
@@ -499,20 +499,20 @@
       margin-bottom: 10px;
       line-height: 1.3;
     }
- 
+
     .s-card p {
       font-size: 13px;
       color: var(--muted);
       font-weight: 300;
       line-height: 1.65;
     }
- 
+
     /* ── PACKAGES ── */
     #packages {
       background: var(--deep);
       border-bottom: 1px solid var(--border);
     }
- 
+
     .packages-intro {
       font-size: 17px;
       font-weight: 300;
@@ -524,37 +524,37 @@
       padding-left: 20px;
       border-left: 3px solid var(--amber);
     }
- 
+
     .packages-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2px;
       margin-bottom: 2px;
     }
- 
+
     .pkg-card {
       background: var(--steel);
       padding: 28px 32px;
       border-top: 3px solid var(--amber);
       display: grid;
-      grid-template-columns: 220px 1fr auto;
+      grid-template-columns: 200px 1fr;
       align-items: start;
       gap: 32px;
     }
- 
+
     .pkg-card-left {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
- 
+
     .pkg-price {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 26px;
       color: var(--amber);
       line-height: 1;
     }
- 
+
     .pkg-card strong {
       display: block;
       font-size: 17px;
@@ -562,7 +562,7 @@
       color: var(--offwhite);
       line-height: 1.3;
     }
- 
+
     .pkg-headline {
       font-size: 13px;
       font-weight: 600;
@@ -570,14 +570,14 @@
       margin-bottom: 8px;
       line-height: 1.4;
     }
- 
+
     .pkg-card p {
       font-size: 13px;
       color: var(--muted);
       font-weight: 300;
       line-height: 1.65;
     }
- 
+
     .pkg-tag {
       font-size: 10px;
       font-weight: 600;
@@ -588,7 +588,7 @@
       padding-top: 6px;
       line-height: 1.5;
     }
- 
+
     .pkg-bespoke {
       background: rgba(201,168,76,0.06);
       border: 1px solid var(--border);
@@ -601,14 +601,14 @@
       flex-wrap: wrap;
       margin-top: 2px;
     }
- 
+
     .pkg-bespoke p {
       font-size: 15px;
       font-style: italic;
       color: var(--offwhite);
       font-weight: 300;
     }
- 
+
     /* ── AMBER BAND ── */
     .amber-band {
       background: var(--amber);
@@ -616,7 +616,7 @@
       position: relative;
       z-index: 1;
     }
- 
+
     .amber-band-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -625,7 +625,7 @@
       align-items: center;
       gap: 40px;
     }
- 
+
     .amber-band p {
       font-size: 22px;
       font-weight: 800;
@@ -633,7 +633,7 @@
       line-height: 1.4;
       max-width: 600px;
     }
- 
+
     .amber-band p span {
       display: block;
       font-size: 15px;
@@ -641,7 +641,7 @@
       margin-top: 8px;
       opacity: 0.75;
     }
- 
+
     .amber-band a {
       background: var(--steel);
       color: var(--amber);
@@ -658,26 +658,26 @@
       align-items: center;
       gap: 10px;
     }
- 
+
     .amber-band a:hover { opacity: 0.9; transform: translateX(4px); }
- 
+
     /* ── HOW IT WORKS ── */
     #process {
       background: var(--steel);
       border-bottom: 1px solid var(--border);
     }
- 
+
     .process-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
     }
- 
+
     .step {
       background: var(--deep);
       padding: 32px 28px;
     }
- 
+
     .step-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 56px;
@@ -685,7 +685,7 @@
       line-height: 1;
       margin-bottom: 20px;
     }
- 
+
     .step strong {
       display: block;
       font-size: 14px;
@@ -694,24 +694,24 @@
       margin-bottom: 10px;
       letter-spacing: 0.02em;
     }
- 
+
     .step p {
       font-size: 13px;
       color: var(--muted);
       font-weight: 300;
       line-height: 1.65;
     }
- 
+
     /* ── CONTACT ── */
     #contact { background: var(--deep); }
- 
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
     }
- 
+
     .contact-text p {
       font-size: 16px;
       font-weight: 300;
@@ -720,13 +720,13 @@
       margin-bottom: 40px;
       font-style: italic;
     }
- 
+
     .contact-details {
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
- 
+
     .contact-row {
       display: flex;
       align-items: center;
@@ -737,9 +737,9 @@
       transition: border-color 0.2s;
       background: var(--steel);
     }
- 
+
     .contact-row:hover { border-color: var(--amber); }
- 
+
     .contact-icon {
       font-size: 14px;
       color: var(--amber);
@@ -747,7 +747,7 @@
       text-align: center;
       flex-shrink: 0;
     }
- 
+
     .contact-row-text strong {
       display: block;
       font-size: 11px;
@@ -757,13 +757,13 @@
       color: var(--amber);
       margin-bottom: 2px;
     }
- 
+
     .contact-row-text span {
       font-size: 14px;
       color: var(--offwhite);
       font-weight: 300;
     }
- 
+
     .contact-cta {
       margin-top: 40px;
       padding: 28px 24px;
@@ -771,7 +771,7 @@
       border: 1px solid var(--border);
       border-left: 3px solid var(--amber);
     }
- 
+
     .contact-cta p {
       font-size: 15px;
       font-style: italic;
@@ -779,7 +779,7 @@
       line-height: 1.6;
       margin-bottom: 0;
     }
- 
+
     /* ── FOOTER ── */
     footer {
       background: #0a1018;
@@ -791,14 +791,14 @@
       position: relative;
       z-index: 1;
     }
- 
+
     .footer-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 28px;
       color: var(--offwhite);
       letter-spacing: 0.04em;
     }
- 
+
     .footer-role {
       font-size: 10px;
       font-weight: 500;
@@ -807,21 +807,21 @@
       color: var(--amber);
       margin-top: 3px;
     }
- 
+
     .footer-right {
       font-size: 12px;
       color: var(--muted);
       font-weight: 300;
       text-align: right;
     }
- 
+
     .footer-right a {
       color: var(--muted);
       text-decoration: none;
     }
- 
+
     .footer-right a:hover { color: var(--amber); }
- 
+
     .footer-tools-link {
       display: block;
       margin-top: 6px;
@@ -831,9 +831,9 @@
       letter-spacing: 0.06em;
       opacity: 0.75;
     }
- 
+
     .footer-tools-link:hover { opacity: 1; }
- 
+
     /* ── HAMBURGER MENU ── */
     .hamburger {
       display: none;
@@ -887,7 +887,7 @@
       text-align: center;
       border-bottom: none !important;
     }
- 
+
     /* ── TESTIMONIALS ── */
     #testimonials { background: var(--steel); border-bottom: 1px solid var(--border); }
     .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
@@ -914,7 +914,7 @@
     .testimonial-author strong { display: block; font-size: 13px; font-weight: 600; color: var(--amber); letter-spacing: 0.06em; }
     .testimonial-author span { font-size: 12px; color: var(--muted); font-weight: 300; }
     .testimonial-placeholder { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); opacity: 0.4; margin-top: 12px; }
- 
+
     /* ── CONTACT FORM ── */
     .contact-form { display: flex; flex-direction: column; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
@@ -964,10 +964,10 @@
       font-style: italic;
       line-height: 1.6;
     }
- 
+
     /* ── PROCESS CTA ── */
     .process-cta { margin-top: 48px; text-align: center; }
- 
+
     /* ── HERO FRAMEWORK ── */
   .hero-inner {
     display: grid;
@@ -976,12 +976,12 @@
     align-items: center;
     width: 100%;
   }
- 
+
   .hero-left {
     display: flex;
     flex-direction: column;
   }
- 
+
   .hero-right {
     display: flex;
     flex-direction: column;
@@ -989,7 +989,7 @@
     opacity: 0;
     animation: fadeUp 0.7s ease 0.9s forwards;
   }
- 
+
   .framework-row {
     background: rgba(201,168,76,0.04);
     border: 1px solid var(--border);
@@ -1000,11 +1000,11 @@
     gap: 4px;
     transition: background 0.2s;
   }
- 
+
   .framework-row:hover {
     background: rgba(201,168,76,0.08);
   }
- 
+
   .framework-row-word {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
@@ -1012,7 +1012,7 @@
     letter-spacing: 0.06em;
     line-height: 1;
   }
- 
+
   .framework-row-desc {
     font-size: 12px;
     font-weight: 300;
@@ -1020,7 +1020,7 @@
     line-height: 1.4;
     letter-spacing: 0.02em;
   }
- 
+
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-right { display: none; }
@@ -1044,10 +1044,81 @@
       footer { padding: 24px 28px; flex-direction: column; align-items: flex-start; gap: 12px; }
       .footer-right { text-align: left; }
     }
+  /* ── ROI CALCULATOR ── */
+  #roi { background: var(--steel); border-bottom: 1px solid var(--border); }
+  .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .roi-sliders { display: flex; flex-direction: column; gap: 32px; }
+  .roi-slider-group { display: flex; flex-direction: column; gap: 10px; }
+  .roi-slider-label { display: flex; justify-content: space-between; align-items: baseline; }
+  .roi-slider-label span:first-child { font-size: 13px; font-weight: 500; color: var(--offwhite); }
+  .roi-slider-value { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--amber); }
+  .roi-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 3px; background: rgba(201,168,76,0.2); outline: none; border-radius: 2px; cursor: pointer; }
+  .roi-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--amber); cursor: pointer; border: 2px solid var(--steel); }
+  .roi-slider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--amber); cursor: pointer; border: 2px solid var(--steel); }
+  .roi-results { background: var(--deep); border: 1px solid var(--border); border-left: 3px solid var(--amber); padding: 36px 32px; display: flex; flex-direction: column; gap: 24px; }
+  .roi-result-row { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+  .roi-result-row:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .roi-result-label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .roi-result-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--amber); line-height: 1; }
+  .roi-result-sub { font-size: 12px; color: var(--muted); font-weight: 300; }
+  .roi-cta-note { font-size: 13px; color: var(--offwhite); font-style: italic; line-height: 1.6; padding-top: 4px; }
+
+  /* ── QUIZ ── */
+  #quiz { background: var(--deep); border-bottom: 1px solid var(--border); }
+  .quiz-wrap { max-width: 640px; }
+  .quiz-steps { position: relative; }
+  .quiz-step { display: none; flex-direction: column; gap: 20px; }
+  .quiz-step.active { display: flex; }
+  .quiz-question { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--offwhite); line-height: 1.1; letter-spacing: 0.01em; }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-option { background: var(--steel); border: 1px solid var(--border); border-left: 3px solid transparent; padding: 16px 20px; font-size: 14px; color: var(--muted); cursor: pointer; transition: all 0.2s; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; }
+  .quiz-option:hover { border-left-color: var(--amber); color: var(--offwhite); }
+  .quiz-option.selected { border-left-color: var(--amber); color: var(--offwhite); background: rgba(201,168,76,0.06); }
+  .quiz-progress { display: flex; gap: 6px; margin-bottom: 28px; }
+  .quiz-dot { width: 24px; height: 3px; background: rgba(201,168,76,0.2); border-radius: 2px; transition: background 0.3s; }
+  .quiz-dot.done { background: var(--amber); }
+  .quiz-result { display: none; flex-direction: column; gap: 20px; }
+  .quiz-result.active { display: flex; }
+  .quiz-result-badge { font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); }
+  .quiz-result-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--offwhite); line-height: 1; }
+  .quiz-result-desc { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.7; max-width: 520px; }
+  .quiz-restart { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0; font-family: 'DM Sans', sans-serif; margin-top: 8px; }
+  .quiz-restart:hover { color: var(--amber); }
+
+  /* ── STAT COUNTERS ── */
+  .stat-num.counting { color: var(--amber); }
+
+  @media (max-width: 900px) {
+    .roi-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ── QUIZ ── */
+  #quiz { background: var(--steel); border-bottom: 1px solid var(--border); }
+  .quiz-wrap { max-width: 640px; }
+  .quiz-progress { display: flex; gap: 8px; margin-bottom: 32px; }
+  .quiz-dot { width: 32px; height: 3px; background: rgba(201,168,76,0.15); border-radius: 2px; transition: background 0.3s; }
+  .quiz-dot.done { background: var(--amber); }
+  .quiz-step { display: none; flex-direction: column; gap: 24px; animation: fadeUp 0.35s ease forwards; }
+  .quiz-step.active { display: flex; }
+  .quiz-question { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 38px); color: var(--offwhite); line-height: 1.05; letter-spacing: 0.01em; }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-option { background: var(--deep); border: 1px solid var(--border); border-left: 3px solid transparent; padding: 16px 20px; font-size: 14px; color: var(--muted); cursor: pointer; transition: all 0.2s; text-align: left; font-family: 'DM Sans', sans-serif; font-weight: 400; line-height: 1.5; }
+  .quiz-option:hover { border-left-color: var(--amber); color: var(--offwhite); background: rgba(201,168,76,0.04); }
+  .quiz-option.selected { border-left-color: var(--amber); color: var(--offwhite); background: rgba(201,168,76,0.08); }
+  .quiz-result { display: none; flex-direction: column; gap: 20px; animation: fadeUp 0.4s ease forwards; }
+  .quiz-result.active { display: flex; }
+  .quiz-result-badge { font-size: 10px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--amber); }
+  .quiz-result-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 56px); color: var(--offwhite); line-height: 0.95; letter-spacing: 0.01em; }
+  .quiz-result-price { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--amber); letter-spacing: 0.04em; margin-top: -4px; }
+  .quiz-result-desc { font-size: 15px; color: var(--muted); font-weight: 300; line-height: 1.75; max-width: 520px; border-left: 3px solid var(--border); padding-left: 20px; font-style: italic; }
+  .quiz-result-actions { display: flex; align-items: center; gap: 24px; margin-top: 8px; flex-wrap: wrap; }
+  .quiz-restart { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: pointer; padding: 0; font-family: 'DM Sans', sans-serif; transition: color 0.2s; }
+  .quiz-restart:hover { color: var(--amber); }
+
   </style>
 </head>
 <body>
- 
+
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
@@ -1066,8 +1137,10 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#packages">Packages</a></li>
+      <li><a href="#quiz">Find My Fit</a></li>
+      <li><a href="#roi">Calculator</a></li>
       <li><a href="#process">How It Works</a></li>
-      <li><a href="#contact" class="nav-cta">Book a Free Call</a></li>
+      <li><a href="https://calendly.com/colleenpmni/30min" target="_blank" class="nav-cta">Book a Free Call</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1077,10 +1150,12 @@
     <a href="#about" onclick="closeMobile()">About</a>
     <a href="#services" onclick="closeMobile()">Services</a>
     <a href="#packages" onclick="closeMobile()">Packages</a>
+    <a href="#quiz" onclick="closeMobile()">Find My Fit</a>
+    <a href="#roi" onclick="closeMobile()">Calculator</a>
     <a href="#process" onclick="closeMobile()">How It Works</a>
-    <a href="#contact" class="mobile-cta" onclick="closeMobile()">Book a Free Call</a>
+    <a href="https://calendly.com/colleenpmni/30min" target="_blank" class="mobile-cta" onclick="closeMobile()">Book a Free Call</a>
   </div>
- 
+
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-inner">
@@ -1109,7 +1184,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- DOES THIS SOUND LIKE YOU -->
   <section id="pain">
     <div class="section-inner">
@@ -1146,7 +1221,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- SERVICES -->
   <section id="services">
     <div class="section-inner">
@@ -1174,7 +1249,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- AMBER BAND -->
   <div class="amber-band">
     <div class="amber-band-inner">
@@ -1182,7 +1257,60 @@
       <a href="https://calendly.com/colleenpmni/30min" target="_blank">Book a Free Discovery Call <span style="font-size:16px; letter-spacing:0;">→</span></a>
     </div>
   </div>
- 
+
+  <!-- ROI CALCULATOR -->
+  <section id="roi">
+    <div class="section-inner">
+      <div class="section-label">Find Out Fast</div>
+      <h2 class="section-title">How much is the chaos <em>costing you?</em></h2>
+      <div class="section-divider"></div>
+      <div class="roi-grid">
+        <div class="roi-sliders">
+          <div class="roi-slider-group">
+            <div class="roi-slider-label">
+              <span>Hours lost to admin per week</span>
+              <span class="roi-slider-value" id="val-admin">8 hrs</span>
+            </div>
+            <input type="range" class="roi-slider" id="sl-admin" min="1" max="30" value="8">
+          </div>
+          <div class="roi-slider-group">
+            <div class="roi-slider-label">
+              <span>Your hourly rate</span>
+              <span class="roi-slider-value" id="val-rate">£35/hr</span>
+            </div>
+            <input type="range" class="roi-slider" id="sl-rate" min="15" max="150" value="35" step="5">
+          </div>
+          <div class="roi-slider-group">
+            <div class="roi-slider-label">
+              <span>Team size</span>
+              <span class="roi-slider-value" id="val-team">3 people</span>
+            </div>
+            <input type="range" class="roi-slider" id="sl-team" min="1" max="20" value="3">
+          </div>
+        </div>
+        <div class="roi-results">
+          <div class="roi-result-row">
+            <div class="roi-result-label">Cost to you per week</div>
+            <div class="roi-result-num" id="res-week">£280</div>
+            <div class="roi-result-sub">in unbillable time lost to admin</div>
+          </div>
+          <div class="roi-result-row">
+            <div class="roi-result-label">Cost per year</div>
+            <div class="roi-result-num" id="res-year">£14,560</div>
+            <div class="roi-result-sub">that proper systems would give back</div>
+          </div>
+          <div class="roi-result-row">
+            <div class="roi-result-label">Payback on a Systems Audit</div>
+            <div class="roi-result-num" id="res-payback">4 days</div>
+            <div class="roi-result-sub">from £150 — the audit pays for itself fast</div>
+          </div>
+          <p class="roi-cta-note">Most clients recover the cost of a Systems Audit within the first week. The question isn't whether you can afford it — it's whether you can afford not to.</p>
+          <a href="https://calendly.com/colleenpmni/30min" target="_blank" class="btn-primary" style="display:inline-block; margin-top:8px;">Book a Free Discovery Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PACKAGES -->
   <section id="packages">
     <div class="section-inner">
@@ -1197,32 +1325,40 @@
             <strong>Systems Audit</strong>
             <div class="pkg-price">From £150</div>
           </div>
-          <p>We review how your business currently runs, find what is slowing you down and costing you money, and give you a clear written action plan you can start using straight away.</p>
-          <div class="pkg-tag">Perfect for gaining clarity before committing to change.</div>
+          <div>
+            <p>We review how your business currently runs, find what is slowing you down and costing you money, and give you a clear written action plan you can start using straight away.</p>
+            <div class="pkg-tag">Perfect for gaining clarity before committing to change.</div>
+          </div>
         </div>
         <div class="pkg-card">
           <div class="pkg-card-left">
             <strong>Systems Implementation</strong>
             <div class="pkg-price">From £550</div>
           </div>
-          <p>We do not just find the problems, we fix them. I design and build the right processes for your business, from enquiry handling and scheduling to invoicing workflows. Done properly, not just patched.</p>
-          <div class="pkg-tag">Ideal for businesses ready to make real, lasting changes.</div>
+          <div>
+            <p>We do not just find the problems, we fix them. I design and build the right processes for your business, from enquiry handling and scheduling to invoicing workflows. Done properly, not just patched.</p>
+            <div class="pkg-tag">Ideal for businesses ready to make real, lasting changes.</div>
+          </div>
         </div>
         <div class="pkg-card">
           <div class="pkg-card-left">
             <strong>Team Training &amp; SOPs</strong>
             <div class="pkg-price">From £150</div>
           </div>
-          <p>I work hands-on with your team, training them on new systems and writing everything up into clear Standard Operating Procedures. Your business stops relying on you to explain things from scratch every time.</p>
-          <div class="pkg-tag">Essential for businesses ready to delegate properly.</div>
+          <div>
+            <p>I work hands-on with your team, training them on new systems and writing everything up into clear Standard Operating Procedures. Your business stops relying on you to explain things from scratch every time.</p>
+            <div class="pkg-tag">Essential for businesses ready to delegate properly.</div>
+          </div>
         </div>
         <div class="pkg-card">
           <div class="pkg-card-left">
             <strong>Ongoing Support</strong>
             <div class="pkg-price">From £99/month</div>
           </div>
-          <p>Regular check-ins, process reviews and continuous improvement as your business grows. Think of it as having an operations partner in your corner every month, without the cost of a full-time hire.</p>
-          <div class="pkg-tag">Perfect for businesses that want ongoing support without the overhead.</div>
+          <div>
+            <p>Regular check-ins, process reviews and continuous improvement as your business grows. Think of it as having an operations partner in your corner every month, without the cost of a full-time hire.</p>
+            <div class="pkg-tag">Perfect for businesses that want ongoing support without the overhead.</div>
+          </div>
         </div>
       </div>
       <div class="pkg-bespoke">
@@ -1231,7 +1367,65 @@
       </div>
     </div>
   </section>
- 
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <div class="section-inner">
+      <div class="section-label">Not Sure Where to Start?</div>
+      <h2 class="section-title">Find your <em>right fit.</em></h2>
+      <div class="section-divider"></div>
+      <div class="quiz-wrap">
+
+        <div class="quiz-progress">
+          <div class="quiz-dot done" id="dot-0"></div>
+          <div class="quiz-dot" id="dot-1"></div>
+          <div class="quiz-dot" id="dot-2"></div>
+        </div>
+
+        <div class="quiz-step active" id="step-0">
+          <div class="quiz-question">What's your biggest headache right now?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="quizAnswer(0,0)">I don't know where the time goes — I'm just constantly busy</button>
+            <button class="quiz-option" onclick="quizAnswer(0,1)">Invoices go out late and I'm always chasing payments</button>
+            <button class="quiz-option" onclick="quizAnswer(0,2)">My team can't work without me being involved in everything</button>
+            <button class="quiz-option" onclick="quizAnswer(0,3)">Everything feels chaotic — I need someone to look at the whole picture</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" id="step-1">
+          <div class="quiz-question">How long has this been going on?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="quizAnswer(1,0)">Just starting to notice it — things are getting busier</button>
+            <button class="quiz-option" onclick="quizAnswer(1,1)">A few months — it's starting to affect how the business runs</button>
+            <button class="quiz-option" onclick="quizAnswer(1,2)">Over a year — it's actively holding back growth</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" id="step-2">
+          <div class="quiz-question">What would a good outcome look like?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="quizAnswer(2,0)">A clear picture of what's broken and a plan to fix it</button>
+            <button class="quiz-option" onclick="quizAnswer(2,1)">Actual systems built and working — not just advice</button>
+            <button class="quiz-option" onclick="quizAnswer(2,2)">My team trained and documented so I can step back</button>
+            <button class="quiz-option" onclick="quizAnswer(2,3)">Ongoing support as the business grows month by month</button>
+          </div>
+        </div>
+
+        <div class="quiz-result" id="quiz-result">
+          <div class="quiz-result-badge">Based on your answers, we recommend</div>
+          <div class="quiz-result-title" id="res-title">Systems Audit</div>
+          <div class="quiz-result-price" id="res-price">From £150</div>
+          <div class="quiz-result-desc" id="res-desc">We review how your business currently runs, find what is slowing you down, and give you a clear written action plan you can start using straight away.</div>
+          <div class="quiz-result-actions">
+            <a href="https://calendly.com/colleenpmni/30min" target="_blank" class="btn-primary">Book a Free Call to Discuss →</a>
+            <button class="quiz-restart" onclick="quizRestart()">← Try again</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
@@ -1259,7 +1453,7 @@
           <div class="quals">
             <div class="quals-label">Qualifications</div>
             <div class="quals-list">
-              <span class="qual-tag">PRINCE2</span>
+              <span class="qual-tag">PRINCE2 Practitioner</span>
               <span class="qual-tag">MSc Management &amp; Corporate Governance</span>
               <span class="qual-tag">Lean Six Sigma Green Belt</span>
             </div>
@@ -1284,7 +1478,7 @@
             <div class="stat-num">3</div>
             <div class="stat-text">
               <strong>Qualifications</strong>
-              <span>PRINCE2, MSc Management and Corporate Governance, Lean Six Sigma Green Belt. Applied practically, not just on paper.</span>
+              <span>PRINCE2 Practitioner, MSc Management and Corporate Governance, Lean Six Sigma Green Belt. Applied practically, not just on paper.</span>
             </div>
           </div>
           <div class="stat-row">
@@ -1298,7 +1492,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- HOW IT WORKS -->
   <section id="process">
     <div class="section-inner">
@@ -1327,33 +1521,7 @@
       </div>
     </div>
   </section>
- 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="section-inner">
-      <div class="section-label">What Clients Say</div>
-      <h2 class="section-title">Built on real<br>results.</h2>
-      <div class="section-divider"></div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-text">"Colleen sorted our invoicing system in a week. We have not had a late payment since and I have stopped spending every Sunday evening on admin."</div>
-          <div class="testimonial-author">
-            <strong>Business Owner, Construction &amp; Trades</strong>
-            <span>Northern Ireland</span>
-          </div>
-          <div class="testimonial-placeholder">Replace with real client quote before going live</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-text">"I did not realise how much time we were losing to manual processes until Colleen mapped it out. Within a month we had systems in place that the whole team could follow."</div>
-          <div class="testimonial-author">
-            <strong>Director, SME Services Business</strong>
-            <span>Northern Ireland</span>
-          </div>
-          <div class="testimonial-placeholder">Replace with real client quote before going live</div>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <section id="contact">
     <div class="section-inner">
       <div class="section-label">Book a Free Discovery Call</div>
@@ -1431,7 +1599,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- FOOTER -->
   <footer>
     <div>
@@ -1446,7 +1614,7 @@
       <a href="tools.html" class="footer-tools-link">Free Tools ↗</a>
     </div>
   </footer>
- 
+
   <script>
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
@@ -1459,7 +1627,7 @@
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
     }
- 
+
     // Contact form — submits to Formspree, shows success message
     async function handleSubmit(e) {
       e.preventDefault();
@@ -1489,7 +1657,191 @@
         alert('Something went wrong. Please try again or email colleenpmni@gmail.com directly.');
       }
     }
+    // ── ROI CALCULATOR ──
+    const slAdmin = document.getElementById('sl-admin');
+    const slRate  = document.getElementById('sl-rate');
+    const slTeam  = document.getElementById('sl-team');
+
+    function updateROI() {
+      const hrs  = parseInt(slAdmin.value);
+      const rate = parseInt(slRate.value);
+      const team = parseInt(slTeam.value);
+
+      document.getElementById('val-admin').textContent = hrs + ' hrs';
+      document.getElementById('val-rate').textContent  = '£' + rate + '/hr';
+      document.getElementById('val-team').textContent  = team + ' ' + (team === 1 ? 'person' : 'people');
+
+      const weekCost = hrs * rate;
+      const yearCost = weekCost * 52;
+      const paybackDays = Math.max(1, Math.round(150 / weekCost * 5));
+
+      document.getElementById('res-week').textContent    = '£' + weekCost.toLocaleString();
+      document.getElementById('res-year').textContent    = '£' + yearCost.toLocaleString();
+      document.getElementById('res-payback').textContent = paybackDays + (paybackDays === 1 ? ' day' : ' days');
+    }
+
+    slAdmin.addEventListener('input', updateROI);
+    slRate.addEventListener('input', updateROI);
+    slTeam.addEventListener('input', updateROI);
+    updateROI();
+
+    // ── QUIZ ──
+    const answers = [];
+    let currentStep = 0;
+
+    function answer(step, choice) {
+      answers[step] = choice;
+      const opts = document.querySelectorAll('#step-' + step + ' .quiz-option');
+      opts.forEach((o, i) => o.classList.toggle('selected', i === choice));
+
+      setTimeout(() => {
+        document.getElementById('step-' + step).classList.remove('active');
+        currentStep = step + 1;
+
+        if (currentStep < 3) {
+          document.getElementById('step-' + currentStep).classList.add('active');
+          document.getElementById('dot-' + currentStep).classList.add('done');
+        } else {
+          showResult();
+        }
+      }, 280);
+    }
+
+    function showResult() {
+      document.querySelector('.quiz-steps').style.display = 'none';
+      const result = document.getElementById('quiz-result');
+      result.classList.add('active');
+
+      // Determine recommendation from answers
+      const a0 = answers[0], a2 = answers[2];
+      let title, desc;
+
+      if (a2 === 0 || a0 === 3) {
+        title = 'Systems Audit'; desc = 'The perfect starting point. We map exactly what\'s slowing you down and give you a clear written action plan — from £150. Most clients use this before committing to anything bigger.';
+      } else if (a2 === 1 || a0 === 1) {
+        title = 'Systems Implementation'; desc = 'You know things need to change — now let\'s actually fix them. We build the right processes for your business from the ground up. From £550.';
+      } else if (a2 === 2 || a0 === 2) {
+        title = 'Team Training & SOPs'; desc = 'Get your team working independently with clear, documented processes they can follow without you. From £150.';
+      } else {
+        title = 'Ongoing Support'; desc = 'An operations partner in your corner every month — without the cost of a full-time hire. Regular check-ins, process reviews and continuous improvement. From £99/month.';
+      }
+
+      document.getElementById('res-title').textContent = title;
+      document.getElementById('res-desc').textContent  = desc;
+    }
+
+    function restartQuiz() {
+      answers.length = 0;
+      currentStep = 0;
+      document.querySelectorAll('.quiz-step').forEach((s, i) => {
+        s.classList.toggle('active', i === 0);
+        s.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+      });
+      document.querySelectorAll('.quiz-dot').forEach((d, i) => d.classList.toggle('done', i === 0));
+      document.querySelector('.quiz-steps').style.display = '';
+      document.getElementById('quiz-result').classList.remove('active');
+    }
+
+    // ── STAT COUNTERS ──
+    function animateCounter(el, target, suffix, duration) {
+      const start = performance.now();
+      const isNum = !isNaN(parseInt(target));
+      if (!isNum) return;
+      const end = parseInt(target);
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(ease * end);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = '1';
+          const raw = entry.target.textContent.trim();
+          if (raw === '10+') { animateCounter(entry.target, 10, '+', 1200); }
+          else if (raw === '2')  { animateCounter(entry.target, 2,  '', 800);  }
+          else if (raw === '3')  { animateCounter(entry.target, 3,  '', 900);  }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+
+    // ── QUIZ ──
+    const quizAnswers = [];
+
+    function quizAnswer(step, choice) {
+      quizAnswers[step] = choice;
+
+      // Mark selected
+      document.querySelectorAll('#step-' + step + ' .quiz-option')
+        .forEach((o, i) => o.classList.toggle('selected', i === choice));
+
+      setTimeout(function() {
+        document.getElementById('step-' + step).classList.remove('active');
+        var next = step + 1;
+
+        if (next < 3) {
+          document.getElementById('step-' + next).classList.add('active');
+          document.getElementById('dot-' + next).classList.add('done');
+        } else {
+          showQuizResult();
+        }
+      }, 300);
+    }
+
+    function showQuizResult() {
+      document.querySelectorAll('.quiz-step').forEach(function(s) { s.style.display = 'none'; });
+      document.querySelector('.quiz-progress').style.display = 'none';
+
+      var a0 = quizAnswers[0];
+      var a2 = quizAnswers[2];
+      var title, price, desc;
+
+      if (a2 === 0 || a0 === 3) {
+        title = 'Systems Audit';
+        price = 'From £150';
+        desc  = 'We review how your business currently runs, find exactly what is slowing you down and costing you money, and give you a clear written action plan you can start using straight away. The perfect first step before committing to anything bigger.';
+      } else if (a2 === 1 || a0 === 1) {
+        title = 'Systems Implementation';
+        price = 'From £550';
+        desc  = 'We do not just find the problems — we fix them. I design and build the right processes for your business, from enquiry handling and scheduling to invoicing workflows. Done properly, not just patched.';
+      } else if (a2 === 2 || a0 === 2) {
+        title = 'Team Training & SOPs';
+        price = 'From £150';
+        desc  = 'I work hands-on with your team, training them on new systems and writing everything up into clear Standard Operating Procedures. Your business stops relying on you to explain things from scratch every time.';
+      } else {
+        title = 'Ongoing Support';
+        price = 'From £99/month';
+        desc  = 'Regular check-ins, process reviews and continuous improvement as your business grows. Think of it as having an operations partner in your corner every month, without the cost of a full-time hire.';
+      }
+
+      document.getElementById('res-title').textContent = title;
+      document.getElementById('res-price').textContent = price;
+      document.getElementById('res-desc').textContent  = desc;
+      document.getElementById('quiz-result').classList.add('active');
+    }
+
+    function quizRestart() {
+      quizAnswers.length = 0;
+      document.querySelectorAll('.quiz-step').forEach(function(s, i) {
+        s.style.display = '';
+        s.classList.toggle('active', i === 0);
+        s.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
+      });
+      document.querySelectorAll('.quiz-dot').forEach(function(d, i) {
+        d.classList.toggle('done', i === 0);
+      });
+      document.querySelector('.quiz-progress').style.display = '';
+      document.getElementById('quiz-result').classList.remove('active');
+    }
+
   </script>
 </body>
 </html>
- 
